@@ -2,7 +2,6 @@
 // import { useEffect, useState } from 'react';
 // import { useForm } from 'react-hook-form';
 // import 'react-toastify/dist/ReactToastify.css';
-import { View } from 'react-native';
 import {
   Form,
   Button,
@@ -14,8 +13,8 @@ import {
 } from './LoginForm.styled';
 import defaultAvatar from '../../assets/images/default-signin-avatar.png';
 import { useForm, Controller } from 'react-hook-form';
+import AuthFormMessage from '../AuthFormMessage/AuthFormMessage';
 // import { errorToast, successToast } from 'utils/toasts';
-// import AuthFormMessage from 'components/AuthFormMessage';
 // import { loginUser } from 'redux/auth/operations';
 // import { selectIsLoading } from 'redux/auth/selectors';
 // import pagesPath from 'constants/pagesPath';
@@ -25,13 +24,19 @@ const LoginForm = () => {
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     defaultValues: {
       email: '',
       password: '',
     },
   });
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
+
   //   const [credentials, setCredentials] = useState(null);
   //   const isLoading = useSelector(selectIsLoading);
   //   const dispatch = useDispatch();
@@ -96,10 +101,16 @@ const LoginForm = () => {
           // disabled={isLoading}
           type='submit'
           activeOpacity={0.7}
+          onPress={handleSubmit(onSubmit)}
         >
           <ButtonText>Log in</ButtonText>
         </Button>
       </Form>
+      <AuthFormMessage
+        action={'Sign up'}
+        // pageLink={`/${pagesPath.registerPath}`}
+        message={"if you don't have an account yet"}
+      />
     </>
   );
   // (
@@ -125,11 +136,7 @@ const LoginForm = () => {
   //               ? 'Password is required'
   //               : 'Password minimum length is 7 characters'
   //           )}
-  //         <AuthFormMessage
-  //           action={'Sign up'}
-  //           pageLink={`/${pagesPath.registerPath}`}
-  //           message={"if you don't have an account yet"}
-  //         />
+
   //
   //       </Form>
   // </>
