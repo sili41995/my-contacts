@@ -19,18 +19,20 @@ import AuthFormMessage from '../AuthFormMessage/AuthFormMessage';
 // import { selectIsLoading } from 'redux/auth/selectors';
 // import pagesPath from 'constants/pagesPath';
 
+const defaultFormState = {
+  defaultValues: {
+    email: '',
+    password: '',
+  },
+};
+
 const LoginForm = ({ handleFormPress, isShowKeyboard }) => {
   const {
     control,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({
-    defaultValues: {
-      email: '',
-      password: '',
-    },
-  });
+  } = useForm(defaultFormState);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -40,12 +42,6 @@ const LoginForm = ({ handleFormPress, isShowKeyboard }) => {
   //   const [credentials, setCredentials] = useState(null);
   //   const isLoading = useSelector(selectIsLoading);
   //   const dispatch = useDispatch();
-  //   const {
-  //     register,
-  //     formState: { errors },
-  //     handleSubmit,
-  //     setFocus,
-  //   } = useForm();
   //   useEffect(() => {
   //     setFocus('email');
   //   }, [setFocus]);
@@ -119,34 +115,6 @@ const LoginForm = ({ handleFormPress, isShowKeyboard }) => {
       )}
     </>
   );
-  // (
-  // <>
-
-  //
-  //
-  //       <Form onSubmit={handleSubmit(setCredentials)}>
-  //         <Input
-  //           {...register('email', { required: true })}
-  //           type="email"
-  //           placeholder="Email"
-  //         />
-  //         {errors.email && errorToast('Email is required')}
-  //         <Input
-  //           {...register('password', { required: true, minLength: 7 })}
-  //           type="password"
-  //           placeholder="Password"
-  //         />
-  //         {errors.password &&
-  //           errorToast(
-  //             errors.password.type === 'required'
-  //               ? 'Password is required'
-  //               : 'Password minimum length is 7 characters'
-  //           )}
-
-  //
-  //       </Form>
-  // </>
-  // );
 };
 
 export default LoginForm;
