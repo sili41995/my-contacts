@@ -1,60 +1,71 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-// import { useForm } from 'react-hook-form';
-// import 'react-toastify/dist/ReactToastify.css';
 import {
   Form,
   Button,
   ButtonText,
   Message,
   Title,
-  Image,
   Input,
-} from './LoginForm.styled';
-import defaultAvatar from '../../assets/images/default-signin-avatar.png';
+} from './RegisterForm.styled';
 import { useForm, Controller } from 'react-hook-form';
 import AuthFormMessage from '../AuthFormMessage/AuthFormMessage';
-import { errorToast, successToast } from '../../utils/toasts';
-import { loginUser } from '../../redux/auth/operations';
-import { selectIsLoading } from '../../redux/auth/selectors';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { useForm } from 'react-hook-form';
+// import 'react-toastify/dist/ReactToastify.css';
+// import { errorToast, successToast } from 'utils/toasts';
+// import { registerUser } from 'redux/auth/operations';
+// import { selectIsLoading } from 'redux/auth/selectors';
 // import pagesPath from 'constants/pagesPath';
 
 const defaultFormState = {
   defaultValues: {
+    name: '',
     email: '',
     password: '',
   },
 };
 
-const LoginForm = ({ handleFormPress, isShowKeyboard }) => {
-  const [credentials, setCredentials] = useState(null);
-  const isLoading = useSelector(selectIsLoading);
-  const dispatch = useDispatch();
+const RegisterForm = ({ handleFormPress, isShowKeyboard }) => {
   const {
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm(defaultFormState);
 
-  useEffect(() => {
-    if (credentials) {
-      const promise = dispatch(loginUser(credentials));
-      promise.unwrap().then(() => {
-        successToast('Hello, my friend!');
-      });
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
 
-      return () => {
-        promise.abort();
-      };
-    }
-  }, [credentials, dispatch]);
+  // const onSubmit = (data) => {
+  //   dispatch(registerUser(data))
+  //     .unwrap()
+  //     .then(() => {
+  //       successToast('Hello, my friend!');
+  //     });
+  // };
 
   return (
     <>
-      <Title>log in</Title>
+      <Title>sign up</Title>
       <Message>Welcome to Phonebook!</Message>
-      <Image source={defaultAvatar} />
       <Form>
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              placeholder='Login'
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              onFocus={handleFormPress}
+            />
+          )}
+          name='name'
+        />
         <Controller
           control={control}
           rules={{
@@ -92,21 +103,21 @@ const LoginForm = ({ handleFormPress, isShowKeyboard }) => {
             // disabled={isLoading}
             type='submit'
             activeOpacity={0.7}
-            onPress={handleSubmit(setCredentials)}
+            onPress={handleSubmit(onSubmit)}
           >
-            <ButtonText>Log in</ButtonText>
+            <ButtonText>Enlist</ButtonText>
           </Button>
         )}
       </Form>
       {!isShowKeyboard && (
         <AuthFormMessage
-          action={'Sign up'}
+          action={'Log in'}
           // pageLink={`/${pagesPath.registerPath}`}
-          message={"if you don't have an account yet"}
+          message={'if you have an account'}
         />
       )}
     </>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
