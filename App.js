@@ -1,11 +1,11 @@
-import AboutAppScreen from './screens/AboutAppScreen/AboutAppScreen';
+import AboutAppScreen from './screens/AboutAppScreen';
 import theme from './constants/theme';
 import { useFonts } from 'expo-font';
 import interMedium from './assets/fonts/Inter/Inter-Medium.ttf';
 import interSemiBold from './assets/fonts/Inter/Inter-SemiBold.ttf';
 import juaRegular from './assets/fonts/Jua/Jua-Regular.ttf';
 import { ThemeProvider } from 'styled-components/native';
-import LoginScreen from './screens/LoginScreen/LoginScreen';
+import LoginScreen from './screens/LoginScreen';
 
 const fonts = {
   'Inter-Medium': interMedium,

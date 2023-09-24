@@ -1,17 +1,22 @@
 import { Container, FormWrap } from './AuthForm.styled';
-import { Keyboard, TouchableWithoutFeedback } from 'react-native';
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+} from 'react-native';
 
-const AuthForm = ({ children }) => {
-  const keyboardHide = () => {
-    Keyboard.dismiss();
-  };
-
+const AuthForm = ({ children, isShowKeyboard }) => {
   return (
-    <TouchableWithoutFeedback onPress={keyboardHide}>
-      <Container>
-        <FormWrap>{children}</FormWrap>
-      </Container>
-    </TouchableWithoutFeedback>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{ flex: 1 }}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <Container>
+          <FormWrap isShowKeyboard={isShowKeyboard}>{children}</FormWrap>
+        </Container>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 

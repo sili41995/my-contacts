@@ -19,7 +19,7 @@ import AuthFormMessage from '../AuthFormMessage/AuthFormMessage';
 // import { selectIsLoading } from 'redux/auth/selectors';
 // import pagesPath from 'constants/pagesPath';
 
-const LoginForm = () => {
+const LoginForm = ({ handleFormPress, isShowKeyboard }) => {
   const {
     control,
     handleSubmit,
@@ -78,6 +78,7 @@ const LoginForm = () => {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
+              onFocus={handleFormPress}
             />
           )}
           name='email'
@@ -93,24 +94,29 @@ const LoginForm = () => {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
+              onFocus={handleFormPress}
             />
           )}
           name='password'
         />
-        <Button
-          // disabled={isLoading}
-          type='submit'
-          activeOpacity={0.7}
-          onPress={handleSubmit(onSubmit)}
-        >
-          <ButtonText>Log in</ButtonText>
-        </Button>
+        {!isShowKeyboard && (
+          <Button
+            // disabled={isLoading}
+            type='submit'
+            activeOpacity={0.7}
+            onPress={handleSubmit(onSubmit)}
+          >
+            <ButtonText>Log in</ButtonText>
+          </Button>
+        )}
       </Form>
-      <AuthFormMessage
-        action={'Sign up'}
-        // pageLink={`/${pagesPath.registerPath}`}
-        message={"if you don't have an account yet"}
-      />
+      {!isShowKeyboard && (
+        <AuthFormMessage
+          action={'Sign up'}
+          // pageLink={`/${pagesPath.registerPath}`}
+          message={"if you don't have an account yet"}
+        />
+      )}
     </>
   );
   // (

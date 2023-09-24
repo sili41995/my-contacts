@@ -1,8 +1,7 @@
-import React from 'react';
-import { BackgroundImage, Container, Message } from './AboutAppScreen.styled';
+import { BackgroundImage, Container, Message } from './AboutApp.styled';
 import backgroundImage from '../../assets/images/about-app-screen.png';
 
-const AboutAppScreen = () => {
+const AboutApp = () => {
   return (
     <Container>
       <BackgroundImage source={backgroundImage} resizeMode='contain'>
@@ -19,4 +18,4 @@ const AboutAppScreen = () => {
   );
 };
 
-export default AboutAppScreen;
+export default AboutApp;
