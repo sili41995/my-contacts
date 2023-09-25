@@ -111,9 +111,9 @@ const RegisterForm = ({ handleFormPress, isShowKeyboard }) => {
       </Form>
       {!isShowKeyboard && (
         <AuthFormMessage
-          action={'Log in'}
-          // pageLink={`/${pagesPath.registerPath}`}
-          message={'if you have an account'}
+          link='Login'
+          action='Log in'
+          message='if you have an account'
         />
       )}
     </>

@@ -1,12 +1,13 @@
 import styled from 'styled-components/native';
 
-export const Message = styled.Text`
-  text-align: center;
-  color: ${({ theme }) => theme.primaryFontColor};
-  font-family: Inter-Medium;
-  font-size: ${({ theme }) => theme.secondaryFontSize}px;
+export const Container = styled.View`
+  height: 100%;
+  justify-content: center;
 `;
 
-export const Link = styled.Text`
-  color: ${({ theme }) => theme.primaryLinkColor};
+export const Message = styled.Text`
+  color: ${({ theme }) => theme.primaryFontColor};
+  font-family: Jua;
+  font-size: ${({ theme }) => theme.secondaryFontSize}px;
+  text-align: center;
 `;

@@ -1,3 +1,5 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import AboutAppScreen from './screens/AboutAppScreen';
 import theme from './constants/theme';
 import { useFonts } from 'expo-font';
@@ -15,6 +17,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Text } from 'react-native';
 import Toast from 'react-native-toast-message';
 import ContactsScreen from './screens/ContactsScreen';
+import ContactDetailsScreen from './screens/ContactDetailsScreen';
+import AddContactScreen from './screens/AddContactScreen';
+import 'react-native-gesture-handler';
 
 const fonts = {
   'Inter-Medium': interMedium,
@@ -22,8 +27,12 @@ const fonts = {
   Jua: juaRegular,
 };
 
+const authScreenOptions = { headerShown: false };
+
 const App = () => {
   const [fontsLoaded] = useFonts(fonts);
+
+  const AuthStack = createStackNavigator();
 
   if (!fontsLoaded) {
     return null;
@@ -33,12 +42,27 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
-          {/* <AboutAppScreen /> */}
-          {/* <LoginScreen /> */}
-          {/* <RegisterScreen /> */}
-          {/* <UserProfileScreen /> */}
-          <ContactsScreen />
-          <Toast />
+          <NavigationContainer>
+            <AuthStack.Navigator initialRouteName='Login'>
+              <AuthStack.Screen
+                name='Login'
+                component={LoginScreen}
+                options={authScreenOptions}
+              />
+              <AuthStack.Screen
+                name='Register'
+                component={RegisterScreen}
+                options={authScreenOptions}
+              />
+            </AuthStack.Navigator>
+            {/* <AboutAppScreen /> */}
+
+            {/* <UserProfileScreen /> */}
+            {/* <ContactsScreen /> */}
+            {/* <ContactDetailsScreen /> */}
+            {/* <AddContactScreen /> */}
+            {/* <Toast /> */}
+          </NavigationContainer>
         </PersistGate>
       </Provider>
     </ThemeProvider>

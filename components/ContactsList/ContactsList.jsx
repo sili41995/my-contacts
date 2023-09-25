@@ -2,7 +2,9 @@
 // import { useSearchParams } from 'react-router-dom';
 // import ContactsListItem from 'components/ContactsListItem';
 // import EmptyListMessage from 'components/EmptyListMessage';
+import { Text } from 'react-native';
 import ContactsListItem from '../ContactsListItem/ContactsListItem';
+import EmptyListMessage from '../EmptyListMessage/EmptyListMessage';
 import { Container, List } from './ContactsList.styled';
 // import sortContactsByName from 'utils/sortContactsByName';
 // import filterContactsByName from 'utils/filterContactsByName';
@@ -27,7 +29,7 @@ const ContactsList = () => {
     { id: 11, name: 'alex', number: 12345678 },
     { id: 12, name: 'alex', number: 12345678 },
     { id: 13, name: 'alex', number: 12345678 },
-    { id: 14, name: 'alex', number: 12345678 },
+    { id: 14, name: 'Viky', number: 12345678 },
   ];
   // const contacts = useSelector(selectContacts);
   // const [searchParams] = useSearchParams();
@@ -43,6 +45,7 @@ const ContactsList = () => {
     <Container>
       {!!contacts.length && (
         <List
+          contentContainerStyle={{ gap: 8 }}
           data={contacts}
           renderItem={({ item }) => <ContactsListItem contact={item} />}
           keyExtractor={(item) => `${item.id}`}

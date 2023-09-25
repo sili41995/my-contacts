@@ -5,7 +5,6 @@
 // import iconBtnType from 'constants/iconBtnType';
 // import IconButton from 'components/IconButton';
 // import LinkWithQuery from 'components/LinkWithQuery/LinkWithQuery';
-import { Text } from 'react-native';
 import getContactInfo from '../../utils/getContactInfo';
 // import useDeleteContact from 'hooks/useDeleteContact';
 import {
@@ -28,9 +27,9 @@ const ContactsListItem = ({ contact }) => {
     <Item>
       <Image source={userAvatar} />
       <ContactInfo>
-        <Text>{name}</Text>
-        <Phone>{number}</Phone>
+        <Name>{name}</Name>
         <Role>{role}</Role>
+        <Phone>{number}</Phone>
       </ContactInfo>
       {/* <IconButton
         top={0}

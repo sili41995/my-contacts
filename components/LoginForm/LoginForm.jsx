@@ -30,6 +30,7 @@ const LoginForm = ({ handleFormPress, isShowKeyboard }) => {
   const [credentials, setCredentials] = useState(null);
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
+
   const {
     control,
     handleSubmit,
@@ -100,6 +101,7 @@ const LoginForm = ({ handleFormPress, isShowKeyboard }) => {
       </Form>
       {!isShowKeyboard && (
         <AuthFormMessage
+          link='Register'
           action={'Sign up'}
           // pageLink={`/${pagesPath.registerPath}`}
           message={"if you don't have an account yet"}

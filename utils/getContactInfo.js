@@ -4,7 +4,7 @@ import { getContactAvatar } from '../utils/getAvatar';
 const getContactInfo = (contact = {}) => {
   const {
     id,
-    name,
+    name = defaultValues.name,
     number,
     avatar,
     role = defaultValues.role,

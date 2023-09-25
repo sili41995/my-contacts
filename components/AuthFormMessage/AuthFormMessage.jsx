@@ -1,11 +1,18 @@
-// import { Link } from 'react-router-dom';
-import { Text } from 'react-native';
-import { Message } from './AuthFormMessage.styled';
+import { Message, Link } from './AuthFormMessage.styled';
+import { useNavigation } from '@react-navigation/native';
 
-export const AuthFormMessage = ({ message, pageLink, action }) => (
-  <Message>
-    <Text to={pageLink}>{action}</Text> {message}
-  </Message>
-);
+export const AuthFormMessage = ({ message, action, link }) => {
+  const navigation = useNavigation();
+
+  return (
+    <Message
+      onPress={() => {
+        navigation.navigate(link);
+      }}
+    >
+      <Link>{action}</Link> {message}
+    </Message>
+  );
+};
 
 export default AuthFormMessage;
