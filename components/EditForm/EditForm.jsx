@@ -24,15 +24,16 @@ import {
 import { useForm, Controller } from 'react-hook-form';
 import getContactInfo from '../../utils/getContactInfo';
 import { Ionicons } from '@expo/vector-icons';
+import useTargetContact from '../../hooks/useTargetContact';
 
 const EditForm = ({ setEditContact }) => {
   // const [contact, setContact] = useState(null);
   // const isLoading = useSelector(selectIsLoading);
   // const dispatch = useDispatch();
   // const id = useParams()[pagesPath.dynamicParam];
-  // const targetContact = useTargetContact();
+  const targetContact = useTargetContact();
 
-  const { name, number } = getContactInfo();
+  const { name, number } = getContactInfo(targetContact);
 
   const {
     control,

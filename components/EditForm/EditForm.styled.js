@@ -26,6 +26,7 @@ export const Button = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   padding: ${({ theme }) => theme.spacing}px;
+  width: auto;
 `;
 
 export const IconWrap = styled.Text`

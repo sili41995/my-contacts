@@ -8,14 +8,18 @@ import EmptyListMessage from '../EmptyListMessage/EmptyListMessage';
 import { Container, List } from './ContactsList.styled';
 // import sortContactsByName from 'utils/sortContactsByName';
 // import filterContactsByName from 'utils/filterContactsByName';
-// import { selectContacts } from 'redux/contacts/selectors';
 // import searchParamsKeys from 'constants/searchParamsKeys';
 import React, { useMemo } from 'react';
 import contacts from '../../constants/contacts';
+import { StatusBar } from 'react-native';
+import { useSelector } from 'react-redux';
+import { selectContacts } from '../../redux/contacts/selectors';
+import { useEffect } from 'react';
 
 // const { FILTER_SP_KEY, SORT_SP_KEY } = searchParamsKeys;
 
 const ContactsList = () => {
+  const contacts = useSelector(selectContacts);
   // const contacts = useSelector(selectContacts);
   // const [searchParams] = useSearchParams();
   // const filter = searchParams.get(FILTER_SP_KEY) ?? '';

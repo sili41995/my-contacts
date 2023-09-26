@@ -28,9 +28,6 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const ContactDetails = () => {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
-  const {
-    params: { id },
-  } = useRoute();
   const [editContact, setEditContact] = useState(false);
   // const isLoading = useSelector(selectIsLoading);
   // const id = useParams()[pagesPath.dynamicParam];

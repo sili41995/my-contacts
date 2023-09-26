@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
 import { Feather } from '@expo/vector-icons';

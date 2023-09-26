@@ -20,7 +20,7 @@ import ContactDetailsScreen from './screens/ContactDetailsScreen';
 import 'react-native-gesture-handler';
 import React from 'react';
 import PrivateLinks from './components/PrivateLinks/PrivateLinks';
-import Router from './components/Router/Router';
+import AppRouter from './components/AppRouter/AppRouter';
 import { StatusBar } from 'react-native';
 
 const fonts = {
@@ -41,8 +41,9 @@ const App = () => {
       <Provider store={store}>
         <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
           <NavigationContainer>
-            <Router />
+            <AppRouter />
             <Toast />
+            <StatusBar hidden={true} />
           </NavigationContainer>
         </PersistGate>
       </Provider>

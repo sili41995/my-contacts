@@ -9,15 +9,17 @@ import {
   ContactName,
   ContactTitle,
   Image,
-  ListItem,
-  List,
+  Link,
+  LinkText,
   Navigation,
 } from './ContactInfo.styled';
+import { useRoute } from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import useTargetContact from '../../hooks/useTargetContact';
+import ContactRouter from '../ContactRouter/ContactRouter';
 
 const ContactInfo = () => {
-  // const targetContact = useTargetContact();
-  const targetContact = {};
-
+  const targetContact = useTargetContact();
   const { name, role, avatar } = getContactInfo(targetContact);
   const userAvatar = getContactAvatar(avatar);
 
@@ -28,16 +30,15 @@ const ContactInfo = () => {
         <ContactName>{name}</ContactName>
         <ContactDesc>{role}</ContactDesc>
       </ContactTitle>
-      {/* <Navigation>
-        <List>
-          <ListItem>
-            <NavLink to='contact'>Contact</NavLink>
-          </ListItem>
-          <ListItem>
-            <NavLink to='about'>About</NavLink>
-          </ListItem>
-        </List>
-      </Navigation> */}
+      <Navigation>
+        <Link>
+          <LinkText>Contact</LinkText>
+        </Link>
+        <Link>
+          <LinkText>About</LinkText>
+        </Link>
+      </Navigation>
+      <ContactRouter />
       {/* <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense> */}
