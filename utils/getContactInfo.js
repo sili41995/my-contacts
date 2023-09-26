@@ -5,7 +5,7 @@ const getContactInfo = (contact = {}) => {
   const {
     id,
     name = defaultValues.name,
-    number,
+    number = defaultValues.number,
     avatar,
     role = defaultValues.role,
     email = defaultValues.email,

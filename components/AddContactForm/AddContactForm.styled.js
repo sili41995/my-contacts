@@ -72,7 +72,6 @@ export const ButtonContainer = styled.View`
 
 export const Button = styled.TouchableOpacity`
   flex-grow: 1;
-  /* height: 35px; */
   border-radius: 8px;
   justify-content: center;
   align-items: center;

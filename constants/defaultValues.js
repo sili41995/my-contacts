@@ -1,5 +1,6 @@
 const defaultValues = {
   name: 'my name',
+  number: '012345678',
   dateOfBirth: '21 century',
   phoneNumber: 'Is absent',
   location: '💙💛Ukraine, Nikopol',

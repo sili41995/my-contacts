@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import AuthForm from '../components/AuthForm/AuthForm';
 import { Keyboard } from 'react-native';
 import RegisterForm from '../components/RegisterForm/RegisterForm';

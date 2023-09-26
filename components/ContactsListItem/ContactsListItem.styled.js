@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 
-export const Item = styled.View`
+export const Item = styled.TouchableOpacity`
+  background-color: #fff;
   gap: ${({ theme }) => theme.primaryGap}px;
   flex-direction: row;
   align-items: center;

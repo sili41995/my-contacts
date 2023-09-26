@@ -10,27 +10,12 @@ import { Container, List } from './ContactsList.styled';
 // import filterContactsByName from 'utils/filterContactsByName';
 // import { selectContacts } from 'redux/contacts/selectors';
 // import searchParamsKeys from 'constants/searchParamsKeys';
-// import { useMemo } from 'react';
+import React, { useMemo } from 'react';
+import contacts from '../../constants/contacts';
 
 // const { FILTER_SP_KEY, SORT_SP_KEY } = searchParamsKeys;
 
 const ContactsList = () => {
-  const contacts = [
-    { id: 1, name: 'alex', number: 12345678 },
-    { id: 2, name: 'alex', number: 12345678 },
-    { id: 3, name: 'alex', number: 12345678 },
-    { id: 4, name: 'alex', number: 12345678 },
-    { id: 5, name: 'alex', number: 12345678 },
-    { id: 6, name: 'alex', number: 12345678 },
-    { id: 7, name: 'alex', number: 12345678 },
-    { id: 8, name: 'alex', number: 12345678 },
-    { id: 9, name: 'alex', number: 12345678 },
-    { id: 10, name: 'alex', number: 12345678 },
-    { id: 11, name: 'alex', number: 12345678 },
-    { id: 12, name: 'alex', number: 12345678 },
-    { id: 13, name: 'alex', number: 12345678 },
-    { id: 14, name: 'Viky', number: 12345678 },
-  ];
   // const contacts = useSelector(selectContacts);
   // const [searchParams] = useSearchParams();
   // const filter = searchParams.get(FILTER_SP_KEY) ?? '';

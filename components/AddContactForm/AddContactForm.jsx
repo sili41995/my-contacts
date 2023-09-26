@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { Link, useLocation } from 'react-router-dom';
 // import { GiCheckMark } from 'react-icons/gi';
 // import { useForm } from 'react-hook-form';
@@ -45,6 +45,11 @@ const AddContactForm = () => {
       lastName: '',
     },
   });
+
+  const handleCancelPress = () => {
+    reset();
+  };
+
   const onSubmit = (data) => console.log(data);
   // const isLoading = useSelector(selectIsLoading);
   // const dispatch = useDispatch();
@@ -133,7 +138,7 @@ const AddContactForm = () => {
             <ButtonContainer>
               <Button
                 style={{ backgroundColor: '#89f2a6' }}
-                // disabled={isLoading}
+                // disabled={true}
                 activeOpacity={0.7}
                 onPress={handleSubmit(setNewContact)}
               >
@@ -147,7 +152,7 @@ const AddContactForm = () => {
                 activeOpacity={0.7}
                 onPress={Keyboard.dismiss}
               >
-                <ButtonText>Cancel</ButtonText>
+                <ButtonText onPress={handleCancelPress}>Cancel</ButtonText>
               </Button>
             </ButtonContainer>
           </View>
