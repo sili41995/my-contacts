@@ -25,16 +25,17 @@ import { useForm, Controller } from 'react-hook-form';
 import getContactInfo from '../../utils/getContactInfo';
 import { Ionicons } from '@expo/vector-icons';
 import useTargetContact from '../../hooks/useTargetContact';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateContact } from '../../redux/contacts/operations';
+import { errorToast, successToast } from '../../utils/toasts';
+import { selectIsLoading } from '../../redux/contacts/selectors';
 
 const EditForm = ({ setEditContact }) => {
-  // const [contact, setContact] = useState(null);
-  // const isLoading = useSelector(selectIsLoading);
-  // const dispatch = useDispatch();
-  // const id = useParams()[pagesPath.dynamicParam];
+  const [contact, setContact] = useState(null);
+  const isLoading = useSelector(selectIsLoading);
+  const dispatch = useDispatch();
   const targetContact = useTargetContact();
-
-  const { name, number } = getContactInfo(targetContact);
-
+  const { name, number, id } = getContactInfo(targetContact);
   const {
     control,
     handleSubmit,
@@ -45,24 +46,24 @@ const EditForm = ({ setEditContact }) => {
       number,
     },
   });
-  const onSubmit = (data) => console.log(data);
 
-  // useEffect(() => {
-  //   if (contact) {
-  //     const promise = dispatch(updateContact({ contact, id }));
-  //     promise
-  //       .unwrap()
-  //       .then(() => {
-  //         successToast('Contact updated successfully');
-  //       })
-  //       .catch(() => {
-  //         errorToast('Contact update failed');
-  //       });
-  //   }
-  // }, [contact, dispatch, id]);
+  useEffect(() => {
+    if (contact) {
+      const promise = dispatch(updateContact({ contact, id }));
+      promise
+        .unwrap()
+        .then(() => {
+          successToast('Contact updated successfully');
+        })
+        .catch(() => {
+          errorToast('Contact update failed');
+        });
+    }
+  }, [contact, dispatch, id]);
 
   return (
     <>
+      <Title>Contact editing</Title>
       <Form>
         <Controller
           control={control}
@@ -79,7 +80,7 @@ const EditForm = ({ setEditContact }) => {
           )}
           name='name'
         />
-
+        {errors.name && errorToast('Name is required')}
         <Controller
           control={control}
           rules={{
@@ -95,69 +96,27 @@ const EditForm = ({ setEditContact }) => {
           )}
           name='number'
         />
-
+        {errors.number && errorToast('Phone is required')}
         <ButtonContainer>
           <Button
             style={{ backgroundColor: '#89f2a6' }}
-            // disabled={true}
+            disabled={isLoading}
             activeOpacity={0.7}
-            // onPress={handleSubmit(setNewContact)}
+            onPress={handleSubmit(setContact)}
           >
             <IconWrap>
               <Ionicons name='checkmark' size={30} />
             </IconWrap>
           </Button>
           <Button
-            // disabled={isLoading}
             style={{ backgroundColor: '#ff9192' }}
             activeOpacity={0.7}
-            // onPress={}
+            onPress={setEditContact}
           >
-            <ButtonText
-            // onPress={handleCancelPress}
-            >
-              Cancel
-            </ButtonText>
+            <ButtonText>Cancel</ButtonText>
           </Button>
         </ButtonContainer>
       </Form>
-
-      {/* <Title>Contact editing</Title>
-        <Form onSubmit={handleSubmit(setContact)}>
-          <Input
-            defaultValue={name}
-            {...register('name', { required: true })}
-            type='text'
-            placeholder=''
-          />
-          {errors.name && errorToast('Name is required')}
-          <Input
-            defaultValue={number}
-            {...register('number', { required: true })}
-            type='tel'
-            placeholder=''
-          />
-          {errors.number && errorToast('Phone is required')}
-          <Buttons>
-            <IconButton
-              disabled={isLoading}
-              btnType={iconBtnType.accept}
-              width={44}
-              height={35}
-              type='submit'
-            >
-              <GiCheckMark />
-            </IconButton>
-            <IconButton
-              btnType={iconBtnType.cancel}
-              width={44}
-              height={35}
-              onBtnClick={setEditContact}
-            >
-              <GoX />
-            </IconButton>
-          </Buttons>
-        </Form> */}
     </>
   );
 };

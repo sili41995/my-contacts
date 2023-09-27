@@ -5,6 +5,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import React from 'react';
+import { Platform } from 'react-native';
 
 const AuthForm = ({ children, isShowKeyboard }) => {
   return (

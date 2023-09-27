@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-// import { useForm } from 'react-hook-form';
-// import 'react-toastify/dist/ReactToastify.css';
 import {
   Form,
   Button,
@@ -17,7 +15,6 @@ import AuthFormMessage from '../AuthFormMessage/AuthFormMessage';
 import { errorToast, successToast } from '../../utils/toasts';
 import { loginUser } from '../../redux/auth/operations';
 import { selectIsLoading } from '../../redux/auth/selectors';
-// import pagesPath from 'constants/pagesPath';
 
 const defaultFormState = {
   defaultValues: {
@@ -72,6 +69,7 @@ const LoginForm = ({ handleFormPress, isShowKeyboard }) => {
           )}
           name='email'
         />
+        {errors.email && errorToast('Email is required')}
         <Controller
           control={control}
           rules={{
@@ -88,6 +86,12 @@ const LoginForm = ({ handleFormPress, isShowKeyboard }) => {
           )}
           name='password'
         />
+        {errors.password &&
+          errorToast(
+            errors.password.type === 'required'
+              ? 'Password is required'
+              : 'Password minimum length is 7 characters'
+          )}
         {!isShowKeyboard && (
           <Button
             disabled={isLoading}

@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Form,
   Button,
@@ -8,6 +9,7 @@ import {
 } from './RegisterForm.styled';
 import { useForm, Controller } from 'react-hook-form';
 import AuthFormMessage from '../AuthFormMessage/AuthFormMessage';
+import { useSelector } from 'react-redux';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { useForm } from 'react-hook-form';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -25,6 +27,8 @@ const defaultFormState = {
 };
 
 const RegisterForm = ({ handleFormPress, isShowKeyboard }) => {
+  const isLoading = useSelector(selectIsLoading);
+  const dispatch = useDispatch();
   const {
     control,
     handleSubmit,
@@ -33,17 +37,12 @@ const RegisterForm = ({ handleFormPress, isShowKeyboard }) => {
   } = useForm(defaultFormState);
 
   const onSubmit = (data) => {
-    console.log(data);
-    reset();
+    dispatch(registerUser(data))
+      .unwrap()
+      .then(() => {
+        successToast('Hello, my friend!');
+      });
   };
-
-  // const onSubmit = (data) => {
-  //   dispatch(registerUser(data))
-  //     .unwrap()
-  //     .then(() => {
-  //       successToast('Hello, my friend!');
-  //     });
-  // };
 
   return (
     <>

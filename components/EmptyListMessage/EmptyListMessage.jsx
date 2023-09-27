@@ -1,3 +1,4 @@
+import React from 'react';
 import { Message, Container } from './EmptyListMessage.styled';
 
 const EmptyListMessage = () => (

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Message, Link } from './AuthFormMessage.styled';
 import { useNavigation } from '@react-navigation/native';
 

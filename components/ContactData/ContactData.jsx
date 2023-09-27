@@ -11,15 +11,12 @@ import {
   IconWrap,
   InfoContainer,
 } from './ContactData.styled';
-// import useTargetContact from 'hooks/useTargetContact';
-// import iconBtnType from 'constants/iconBtnType';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 const ContactData = () => {
   const targetContact = useTargetContact();
-
   const { number, email, chat } = getContactInfo(targetContact);
   const phoneNumber = getPhoneNumber(number);
 

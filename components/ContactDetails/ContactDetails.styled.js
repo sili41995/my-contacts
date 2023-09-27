@@ -6,7 +6,6 @@ export const Container = styled.View`
   padding-bottom: ${({ isShowKeyboard, theme }) =>
     isShowKeyboard ? 0 : theme.spacing * 10}px;
   background-color: #fff;
-
   justify-content: ${({ isShowKeyboard }) =>
     isShowKeyboard ? 'space-between' : 'flex-start'};
   gap: ${({ theme }) => theme.primaryGap}px;

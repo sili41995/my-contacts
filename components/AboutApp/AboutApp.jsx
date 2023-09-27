@@ -1,3 +1,4 @@
+import React from 'react';
 import { BackgroundImage, Container, Message } from './AboutApp.styled';
 import backgroundImage from '../../assets/images/about-app-screen.png';
 

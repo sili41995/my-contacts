@@ -1,9 +1,5 @@
-// import { Suspense } from 'react';
-// import { NavLink, Outlet } from 'react-router-dom';
-// import useTargetContact from 'hooks/useTargetContact';
 import getContactInfo from '../../utils/getContactInfo';
 import { getContactAvatar } from '../../utils/getAvatar';
-// import Loader from 'components/Loader';
 import {
   ContactDesc,
   ContactName,

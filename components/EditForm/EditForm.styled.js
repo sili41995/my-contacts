@@ -1,16 +1,13 @@
 import styled from 'styled-components/native';
 
-export const Title = styled.View`
-  /* color: ${({ theme }) => theme.primaryFontColor}; */
-  /* font-family: Inter; */
-  /* font-size: 20px; */
-  /* font-weight: ${({ theme }) => theme.secondaryFontWeight}; */
-  /* text-align: center; */
+export const Title = styled.Text`
+  color: ${({ theme }) => theme.primaryFontColor};
+  font-family: Inter-SemiBold;
+  font-size: 20px;
+  text-align: center;
 `;
 
 export const Form = styled.View`
-  /* display: flex; */
-  /* flex-direction: column; */
   gap: ${({ theme }) => theme.primaryGap}px;
 `;
 
@@ -29,9 +26,7 @@ export const Button = styled.TouchableOpacity`
   width: auto;
 `;
 
-export const IconWrap = styled.Text`
-  color: #00c938;
-`;
+export const IconWrap = styled.Text``;
 
 export const ButtonText = styled.Text`
   font-family: Inter-Medium;
