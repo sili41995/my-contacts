@@ -9,12 +9,11 @@ import { Container, List } from './ContactsList.styled';
 // import sortContactsByName from 'utils/sortContactsByName';
 // import filterContactsByName from 'utils/filterContactsByName';
 // import searchParamsKeys from 'constants/searchParamsKeys';
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import contacts from '../../constants/contacts';
 import { StatusBar } from 'react-native';
 import { useSelector } from 'react-redux';
 import { selectContacts } from '../../redux/contacts/selectors';
-import { useEffect } from 'react';
 
 // const { FILTER_SP_KEY, SORT_SP_KEY } = searchParamsKeys;
 

@@ -39,9 +39,6 @@ const ContactInfo = () => {
         </Link>
       </Navigation>
       <ContactRouter />
-      {/* <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense> */}
     </>
   );
 };

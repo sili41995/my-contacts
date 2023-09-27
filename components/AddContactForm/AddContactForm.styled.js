@@ -43,7 +43,6 @@ export const Input = styled.TextInput`
 
 export const ButtonContainer = styled.View`
   flex-direction: row;
-  justify-content: space-between;
   gap: 20px;
   /* display: flex;
   gap: ${({ theme }) => theme.spacing * 10}px;

@@ -8,6 +8,8 @@ import {
   Container,
   Field,
   Button,
+  IconWrap,
+  InfoContainer,
 } from './ContactData.styled';
 // import { HiOutlinePhone } from 'react-icons/hi';
 // import { IoMdMail } from 'react-icons/io';
@@ -18,6 +20,7 @@ import {
 // import useTargetContact from 'hooks/useTargetContact';
 // import iconBtnType from 'constants/iconBtnType';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { Linking } from 'react-native';
 
 const ContactData = () => {
   const targetContact = useTargetContact();
@@ -25,30 +28,29 @@ const ContactData = () => {
   const { number, email, chat } = getContactInfo(targetContact);
   const phoneNumber = getPhoneNumber(number);
 
+  const handlePhoneLinkPress = (phone) => {
+    Linking.openURL(`tel:${phone}`);
+  };
+
   return (
     <Container>
       <Field>
-        <InfoDesc>Phone number</InfoDesc>
-        {/* <Button
+        <InfoContainer>
+          <InfoDesc>Phone number</InfoDesc>
+          <InfoData>{number}</InfoData>
+        </InfoContainer>
+        <Button
           style={{ backgroundColor: '#7fd1ff' }}
           // disabled={true}
           activeOpacity={0.7}
-          onPress={handleEditBtnClick}
+          onPress={() => {
+            handlePhoneLinkPress(phoneNumber);
+          }}
         >
           <IconWrap style={{ color: '#2681ed' }}>
-            {<AntDesign name='edit' size={35} />}
+            <FontAwesome5 name='phone-alt' size={24} />
           </IconWrap>
-        </Button> */}
-        {/* <FontAwesome5 name='phone-alt' size={24} /> */}
-        {/* 
-        <div>
-         
-        <InfoData>{number}</InfoData>
-       </div>
-        <ActionLink link={`tel:${phoneNumber}`} btnType={iconBtnType.phone}>
-          <HiOutlinePhone />
-      </ActionLink>
-    */}
+        </Button>
       </Field>
       {/* <Field>
          <div>
