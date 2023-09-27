@@ -13,8 +13,7 @@ import {
   LinkText,
   Navigation,
 } from './ContactInfo.styled';
-import { useRoute } from '@react-navigation/native';
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import useTargetContact from '../../hooks/useTargetContact';
 import ContactRouter from '../ContactRouter/ContactRouter';
 
@@ -22,6 +21,19 @@ const ContactInfo = () => {
   const targetContact = useTargetContact();
   const { name, role, avatar } = getContactInfo(targetContact);
   const userAvatar = getContactAvatar(avatar);
+  const [isShowContactData, setIsShowContactData] = useState(true);
+
+  const showContactData = () => {
+    setIsShowContactData(true);
+  };
+
+  const hideContactData = () => {
+    setIsShowContactData(false);
+  };
+
+  const setBackgroundColor = (state) => ({
+    backgroundColor: state ? '#44de6f' : 'transparent',
+  });
 
   return (
     <>
@@ -31,14 +43,20 @@ const ContactInfo = () => {
         <ContactDesc>{role}</ContactDesc>
       </ContactTitle>
       <Navigation>
-        <Link>
+        <Link
+          onPress={showContactData}
+          style={{ ...setBackgroundColor(isShowContactData) }}
+        >
           <LinkText>Contact</LinkText>
         </Link>
-        <Link>
+        <Link
+          onPress={hideContactData}
+          style={{ ...setBackgroundColor(!isShowContactData) }}
+        >
           <LinkText>About</LinkText>
         </Link>
       </Navigation>
-      <ContactRouter />
+      <ContactRouter isShowContactData={isShowContactData} />
     </>
   );
 };
