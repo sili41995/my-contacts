@@ -34,6 +34,7 @@ const ContactsScreen = () => {
         options={contactsScreenOptions}
       />
       <ContactsStack.Screen
+        screenOptions={{ unmountOnBlur: true }}
         name='Contact'
         component={ContactDetails}
         options={contactsScreenOptions}

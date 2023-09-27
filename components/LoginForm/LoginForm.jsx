@@ -90,7 +90,7 @@ const LoginForm = ({ handleFormPress, isShowKeyboard }) => {
         />
         {!isShowKeyboard && (
           <Button
-            // disabled={isLoading}
+            disabled={isLoading}
             type='submit'
             activeOpacity={0.7}
             onPress={handleSubmit(setCredentials)}
@@ -103,7 +103,6 @@ const LoginForm = ({ handleFormPress, isShowKeyboard }) => {
         <AuthFormMessage
           link='Register'
           action={'Sign up'}
-          // pageLink={`/${pagesPath.registerPath}`}
           message={"if you don't have an account yet"}
         />
       )}

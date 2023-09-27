@@ -3,10 +3,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from '../../screens/LoginScreen';
 import RegisterScreen from '../../screens/RegisterScreen';
 
+const AuthStack = createStackNavigator();
 const authScreenOptions = { headerShown: false };
 
 export const PublicLinks = () => {
-  const AuthStack = createStackNavigator();
 
   return (
     <AuthStack.Navigator initialRouteName='Login'>

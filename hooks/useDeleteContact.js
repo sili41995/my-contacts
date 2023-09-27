@@ -1,15 +1,13 @@
-import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contacts/operations';
-import { errorToast, successToast } from 'utils/toasts';
-import pagesPath from 'constants/pagesPath';
 import { useEffect, useState } from 'react';
+import { deleteContact } from '../redux/contacts/operations';
+import { errorToast, successToast } from '../utils/toasts';
+import { useNavigation } from '@react-navigation/native';
 
 const useDeleteContact = (path) => {
   const [contactId, setContactId] = useState(null);
-  const targetId = useParams()[pagesPath.dynamicParam];
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { navigate } = useNavigation();
 
   useEffect(() => {
     if (contactId) {
@@ -20,8 +18,6 @@ const useDeleteContact = (path) => {
           successToast('Contact successfully removed');
           if (path) {
             navigate(path);
-          } else if (targetId === contactId) {
-            navigate(`/${pagesPath.contactsPath}`);
           }
         })
         .catch((error) => {
@@ -29,7 +25,7 @@ const useDeleteContact = (path) => {
           errorToast('Deleting a contact failed');
         });
     }
-  }, [contactId, dispatch, navigate, path, targetId]);
+  }, [contactId, dispatch, navigate, path]);
 
   return setContactId;
 };

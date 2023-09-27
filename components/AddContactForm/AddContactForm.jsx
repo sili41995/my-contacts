@@ -1,39 +1,31 @@
 import React, { useState, useEffect } from 'react';
-// import { Link, useLocation } from 'react-router-dom';
-// import { GiCheckMark } from 'react-icons/gi';
-// import { useForm } from 'react-hook-form';
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import 'react-toastify/dist/ReactToastify.css';
-// import { errorToast, successToast } from 'utils/toasts';
-// import { addContact } from 'redux/contacts/operations';
-// import { selectIsLoading } from 'redux/contacts/selectors';
-// import IconButton from 'components/IconButton';
-// import iconBtnType from 'constants/iconBtnType';
 import {
-  Button,
-  Form,
-  Title,
   Input,
+  Button,
+  Title,
   Container,
   ButtonContainer,
   ButtonText,
   IconWrap,
+  Form,
 } from './AddContactForm.styled';
 import {
-  Text,
-  View,
-  TextInput,
   TouchableWithoutFeedback,
   KeyboardAvoidingView,
   Keyboard,
+  Platform,
 } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { Ionicons } from '@expo/vector-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../../redux/contacts/operations';
+import { errorToast, successToast } from '../../utils/toasts';
+import { selectIsLoading } from '../../redux/auth/selectors';
 
 const AddContactForm = () => {
   const [newContact, setNewContact] = useState(null);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
+  const dispatch = useDispatch();
   const {
     control,
     handleSubmit,
@@ -41,42 +33,32 @@ const AddContactForm = () => {
     reset,
   } = useForm({
     defaultValues: {
-      firstName: '',
-      lastName: '',
+      name: '',
+      number: '',
     },
   });
 
   const handleCancelPress = () => {
+    Keyboard.dismiss();
     reset();
   };
 
-  const onSubmit = (data) => console.log(data);
-  // const isLoading = useSelector(selectIsLoading);
-  // const dispatch = useDispatch();
-  // const {
-  //   register,
-  //   formState: { errors },
-  //   handleSubmit,
-  //   setFocus,
-  //   reset,
-  // } = useForm();
-  // const location = useLocation();
-  // const goBackLink = location.state?.from || '/';
+  const isLoading = useSelector(selectIsLoading);
 
-  // useEffect(() => {
-  //   if (newContact) {
-  //     const promise = dispatch(addContact(newContact));
-  //     promise
-  //       .unwrap()
-  //       .then(() => {
-  //         successToast('Contact added successfully');
-  //         reset();
-  //       })
-  //       .catch(() => {
-  //         errorToast('Adding a contact failed');
-  //       });
-  //   }
-  // }, [dispatch, newContact, reset]);
+  useEffect(() => {
+    if (newContact) {
+      const promise = dispatch(addContact(newContact));
+      promise
+        .unwrap()
+        .then(() => {
+          successToast('Contact added successfully');
+          reset();
+        })
+        .catch(() => {
+          errorToast('Adding a contact failed');
+        });
+    }
+  }, [dispatch, newContact, reset]);
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -92,10 +74,6 @@ const AddContactForm = () => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   setFocus('name');
-  // }, [setFocus]);
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -104,14 +82,14 @@ const AddContactForm = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Container isShowKeyboard={isShowKeyboard}>
           <Title>Add contact</Title>
-          <View>
+          <Form>
             <Controller
               control={control}
               rules={{
                 required: true,
               }}
               render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
+                <Input
                   placeholder='Name'
                   onBlur={onBlur}
                   onChangeText={onChange}
@@ -120,13 +98,14 @@ const AddContactForm = () => {
               )}
               name='name'
             />
+            {errors.name && errorToast('Name is required')}
             <Controller
               control={control}
               rules={{
                 required: true,
               }}
               render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
+                <Input
                   placeholder='Phone'
                   onBlur={onBlur}
                   onChangeText={onChange}
@@ -135,32 +114,29 @@ const AddContactForm = () => {
               )}
               name='number'
             />
+            {errors.number && errorToast('Phone is required')}
             <ButtonContainer>
               <Button
                 style={{ backgroundColor: '#89f2a6' }}
-                // disabled={true}
+                disabled={isLoading}
                 activeOpacity={0.7}
                 onPress={handleSubmit(setNewContact)}
               >
-                <IconWrap>
+                <IconWrap style={{ color: '#00c938' }}>
                   <Ionicons name='checkmark' size={30} />
                 </IconWrap>
               </Button>
               <Button
-                // disabled={isLoading}
+                disabled={isLoading}
                 style={{ backgroundColor: '#ff9192' }}
                 activeOpacity={0.7}
-                onPress={Keyboard.dismiss}
+                onPress={handleCancelPress}
               >
-                <ButtonText onPress={handleCancelPress}>Cancel</ButtonText>
+                <ButtonText>Cancel</ButtonText>
               </Button>
             </ButtonContainer>
-          </View>
+          </Form>
         </Container>
-        {/*
-          {errors.name && errorToast('Name is required')}
-          {errors.number && errorToast('Phone is required')}
-       */}
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );

@@ -3,8 +3,12 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   height: 100%;
   padding: ${({ theme }) => theme.spacing * 10}px;
+  padding-bottom: ${({ isShowKeyboard, theme }) =>
+    isShowKeyboard ? 0 : theme.spacing * 10}px;
   background-color: #fff;
-  justify-content: flex-start;
+
+  justify-content: ${({ isShowKeyboard }) =>
+    isShowKeyboard ? 'space-between' : 'flex-start'};
   gap: ${({ theme }) => theme.primaryGap}px;
 `;
 
@@ -12,20 +16,13 @@ export const ButtonContainer = styled.View`
   flex-direction: row;
   justify-content: flex-end;
   gap: 20px;
-  /* display: flex;
-  gap: ${({ theme }) => theme.primaryGap}px;
-  justify-content: flex-end;
-  margin-bottom: ${({ theme }) => theme.spacing * 28}px; */
 `;
 
 export const Button = styled.TouchableOpacity`
-  /* height: 35px; */
   border-radius: 8px;
   justify-content: center;
   align-items: center;
   padding: ${({ theme }) => theme.spacing}px;
 `;
 
-export const IconWrap = styled.Text`
-  /* color: #00c938; */
-`;
+export const IconWrap = styled.Text``;

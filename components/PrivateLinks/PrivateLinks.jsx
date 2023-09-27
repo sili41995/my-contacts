@@ -9,12 +9,14 @@ const mainScreenOptions = {
   headerShown: false,
 };
 const mainTabsOptions = { tabBarShowLabel: false };
+const MainTabs = createBottomTabNavigator();
 
 const PrivateLinks = () => {
-  const MainTabs = createBottomTabNavigator();
-
   return (
-    <MainTabs.Navigator screenOptions={mainTabsOptions}>
+    <MainTabs.Navigator
+      screenOptions={mainTabsOptions}
+      initialRouteName='Contacts'
+    >
       <MainTabs.Screen
         name='Contacts'
         component={ContactsScreen}
