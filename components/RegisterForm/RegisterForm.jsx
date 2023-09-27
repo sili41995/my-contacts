@@ -9,14 +9,10 @@ import {
 } from './RegisterForm.styled';
 import { useForm, Controller } from 'react-hook-form';
 import AuthFormMessage from '../AuthFormMessage/AuthFormMessage';
-import { useSelector } from 'react-redux';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useForm } from 'react-hook-form';
-// import 'react-toastify/dist/ReactToastify.css';
-// import { errorToast, successToast } from 'utils/toasts';
-// import { registerUser } from 'redux/auth/operations';
-// import { selectIsLoading } from 'redux/auth/selectors';
-// import pagesPath from 'constants/pagesPath';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoading } from '../../redux/auth/selectors';
+import { registerUser } from '../../redux/auth/operations';
+import { errorToast, successToast } from '../../utils/toasts';
 
 const defaultFormState = {
   defaultValues: {
@@ -33,7 +29,6 @@ const RegisterForm = ({ handleFormPress, isShowKeyboard }) => {
     control,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm(defaultFormState);
 
   const onSubmit = (data) => {
@@ -65,6 +60,7 @@ const RegisterForm = ({ handleFormPress, isShowKeyboard }) => {
           )}
           name='name'
         />
+        {errors.name && errorToast('Username is required')}
         <Controller
           control={control}
           rules={{
@@ -81,6 +77,7 @@ const RegisterForm = ({ handleFormPress, isShowKeyboard }) => {
           )}
           name='email'
         />
+        {errors.email && errorToast('Email is required')}
         <Controller
           control={control}
           rules={{
@@ -97,9 +94,15 @@ const RegisterForm = ({ handleFormPress, isShowKeyboard }) => {
           )}
           name='password'
         />
+        {errors.password &&
+          errorToast(
+            errors.password.type === 'required'
+              ? 'Password is required'
+              : 'Password minimum length is 7 characters'
+          )}
         {!isShowKeyboard && (
           <Button
-            // disabled={isLoading}
+            disabled={isLoading}
             type='submit'
             activeOpacity={0.7}
             onPress={handleSubmit(onSubmit)}

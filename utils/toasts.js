@@ -13,7 +13,3 @@ export const successToast = (message) => {
     text1: message,
   });
 };
-
-// export const warnToast = (message) => {
-//   toast.warn(message);
-// };

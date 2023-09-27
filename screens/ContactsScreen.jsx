@@ -2,17 +2,18 @@ import React from 'react';
 import ContactsList from '../components/ContactsList/ContactsList';
 import EmptyListMessage from '../components/EmptyListMessage/EmptyListMessage';
 import { createStackNavigator } from '@react-navigation/stack';
-import contacts from '../constants/contacts';
 import ContactDetails from '../components/ContactDetails/ContactDetails';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from '../redux/contacts/operations';
+import { selectContacts } from '../redux/contacts/selectors';
 
 const ContactsStack = createStackNavigator();
 const contactsScreenOptions = { headerShown: false };
 
 const ContactsScreen = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   useEffect(() => {
     const promise = dispatch(fetchContacts());
