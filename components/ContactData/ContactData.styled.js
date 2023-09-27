@@ -1,9 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* gap: ${({ theme }) => theme.spacing * 10}px; */
+  gap: ${({ theme }) => theme.spacing * 5}px;
 `;
 
 export const Field = styled.View`
@@ -32,6 +30,4 @@ export const Button = styled.TouchableOpacity`
   border-radius: 8px;
 `;
 
-export const IconWrap = styled.Text`
-  color: #00c938;
-`;
+export const IconWrap = styled.Text``;

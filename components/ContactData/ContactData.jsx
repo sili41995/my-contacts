@@ -11,16 +11,11 @@ import {
   IconWrap,
   InfoContainer,
 } from './ContactData.styled';
-// import { HiOutlinePhone } from 'react-icons/hi';
-// import { IoMdMail } from 'react-icons/io';
-// import { RiChat1Line } from 'react-icons/ri';
-// import ActionLink from 'components/ActionLink';
-// import getPhoneNumber from 'utils/getPhoneNumber';
-// import getContactInfo from 'utils/getContactInfo';
 // import useTargetContact from 'hooks/useTargetContact';
 // import iconBtnType from 'constants/iconBtnType';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Linking } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 const ContactData = () => {
   const targetContact = useTargetContact();
@@ -32,6 +27,14 @@ const ContactData = () => {
     Linking.openURL(`tel:${phone}`);
   };
 
+  const handleEmailLinkPress = (email) => {
+    Linking.openURL(`mailto:${email}`);
+  };
+
+  const handleChatLinkPress = (link) => {
+    Linking.openURL(`https://t.me/${link}`);
+  };
+
   return (
     <Container>
       <Field>
@@ -40,39 +43,51 @@ const ContactData = () => {
           <InfoData>{number}</InfoData>
         </InfoContainer>
         <Button
-          style={{ backgroundColor: '#7fd1ff' }}
-          // disabled={true}
+          style={{ backgroundColor: '#89f2a6' }}
           activeOpacity={0.7}
           onPress={() => {
             handlePhoneLinkPress(phoneNumber);
           }}
         >
-          <IconWrap style={{ color: '#2681ed' }}>
+          <IconWrap style={{ color: '#00c938' }}>
             <FontAwesome5 name='phone-alt' size={24} />
           </IconWrap>
         </Button>
       </Field>
-      {/* <Field>
-         <div>
-         <InfoDesc>Email Address</InfoDesc>
-           <InfoData>{email}</InfoData>
-       </div>
-         <ActionLink link={`mailto:${email}`} btnType={iconBtnType.message}>
-         <IoMdMail />
-       </ActionLink>
-      </Field> */}
-      {/* <Field>
-        <div>
+      <Field>
+        <InfoContainer>
+          <InfoDesc>Email Address</InfoDesc>
+          <InfoData>{email}</InfoData>
+        </InfoContainer>
+        <Button
+          style={{ backgroundColor: '#f2e189' }}
+          activeOpacity={0.7}
+          onPress={() => {
+            handleEmailLinkPress(email);
+          }}
+        >
+          <IconWrap style={{ color: '#ffb422' }}>
+            <Ionicons name='mail' size={24} />
+          </IconWrap>
+        </Button>
+      </Field>
+      <Field>
+        <InfoContainer>
           <InfoDesc>Chat</InfoDesc>
           <InfoData>{chat}</InfoData>
-       </div>
-        <ActionLink
-           link={`tg://resolve?domain=${chat}`}
-           btnType={iconBtnType.chat}
-       >
-          <RiChat1Line />
-         </ActionLink>
-      </Field> */}
+        </InfoContainer>
+        <Button
+          style={{ backgroundColor: '#7fd1ff' }}
+          activeOpacity={0.7}
+          onPress={() => {
+            handleChatLinkPress(chat);
+          }}
+        >
+          <IconWrap style={{ color: '#2681ed' }}>
+            <Ionicons name='chatbubble-outline' size={24} />
+          </IconWrap>
+        </Button>
+      </Field>
     </Container>
   );
 };

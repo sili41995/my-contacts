@@ -5,7 +5,7 @@ export const Container = styled.View`
   padding: ${({ theme }) => theme.spacing * 10}px;
   background-color: #fff;
   justify-content: flex-start;
-  gap: 20px;
+  gap: ${({ theme }) => theme.primaryGap}px;
 `;
 
 export const ButtonContainer = styled.View`

@@ -30,8 +30,6 @@ export const Navigation = styled.View`
   padding: ${({ theme }) => theme.spacing}px;
   border-radius: 10px;
   background: #eee;
-  margin-top: ${({ theme }) => theme.spacing * 20}px;
-  margin-bottom: ${({ theme }) => theme.spacing * 10}px;
 `;
 
 export const List = styled.View``;
@@ -41,18 +39,6 @@ export const Link = styled.TouchableOpacity`
   padding: ${({ theme }) => theme.spacing}px
     ${({ theme }) => theme.spacing * 5}px;
   border-radius: 10px;
-  /* & a {
-    display: block;
-    
-    
-    
-    text-decoration: none;
-    &.active,
-    &:hover,
-    &:focus {
-      ;
-    }
-  } */
 `;
 
 export const LinkText = styled.Text`
