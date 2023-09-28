@@ -9,10 +9,7 @@ export const Container = styled.TouchableOpacity`
   align-items: center;
   padding: ${({ theme }) => theme.spacing}px;
   background-color: ${({ btnType }) => setButtonColor(btnType)};
-  width: ${({ btnWidth }) => {
-    console.log(btnWidth);
-    return btnWidth;
-  }}px;
+  width: ${({ btnWidth }) => btnWidth}px;
 `;
 
 export const IconWrap = styled.Text`
