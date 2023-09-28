@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactsList from '../components/ContactsList/ContactsList';
+import ContactsList from 'components/ContactsList/ContactsList';
 import EmptyListMessage from '../components/EmptyListMessage/EmptyListMessage';
 import { createStackNavigator } from '@react-navigation/stack';
 import ContactDetails from '../components/ContactDetails/ContactDetails';

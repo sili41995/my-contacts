@@ -36,19 +36,3 @@ export const ButtonContainer = styled.View`
   flex-direction: row;
   gap: ${({ theme }) => theme.primaryGap}px;
 `;
-
-export const Button = styled.TouchableOpacity`
-  flex-grow: 1;
-  border-radius: 8px;
-  justify-content: center;
-  align-items: center;
-  padding: ${({ theme }) => theme.spacing}px;
-`;
-
-export const IconWrap = styled.Text``;
-
-export const ButtonText = styled.Text`
-  font-family: Inter-Medium;
-  font-size: ${({ theme }) => theme.primaryFontSize}px;
-  color: ${({ theme }) => theme.primaryFontColor};
-`;

@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {
   Input,
-  Button,
   Title,
   Container,
   ButtonContainer,
-  ButtonText,
-  IconWrap,
   Form,
 } from './AddContactForm.styled';
 import {
@@ -21,6 +18,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
 import { errorToast, successToast } from '../../utils/toasts';
 import { selectIsLoading } from '../../redux/auth/selectors';
+import Button from '../Button/Button';
+import iconBtnType from '../../constants/iconBtnType';
 
 const AddContactForm = () => {
   const [newContact, setNewContact] = useState(null);
@@ -117,23 +116,18 @@ const AddContactForm = () => {
             {errors.number && errorToast('Phone is required')}
             <ButtonContainer>
               <Button
-                style={{ backgroundColor: '#89f2a6' }}
+                action={handleSubmit(setNewContact)}
+                btnType={iconBtnType.accept}
                 disabled={isLoading}
-                activeOpacity={0.7}
-                onPress={handleSubmit(setNewContact)}
               >
-                <IconWrap style={{ color: '#00c938' }}>
-                  <Ionicons name='checkmark' size={30} />
-                </IconWrap>
+                <Ionicons name='checkmark' size={30} />
               </Button>
               <Button
+                action={handleCancelPress}
+                btnType={iconBtnType.cancel}
                 disabled={isLoading}
-                style={{ backgroundColor: '#ff9192' }}
-                activeOpacity={0.7}
-                onPress={handleCancelPress}
-              >
-                <ButtonText>Cancel</ButtonText>
-              </Button>
+                title='Cancel'
+              />
             </ButtonContainer>
           </Form>
         </Container>

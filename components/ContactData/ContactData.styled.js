@@ -22,12 +22,3 @@ export const InfoData = styled.Text`
   font-family: Inter-Medium;
   font-size: ${({ theme }) => theme.primaryFontSize}px;
 `;
-
-export const Button = styled.TouchableOpacity`
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  border-radius: 8px;
-`;
-
-export const IconWrap = styled.Text``;
