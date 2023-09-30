@@ -8,6 +8,7 @@ import {
   Link,
   LinkText,
   Navigation,
+  Container,
 } from './ContactInfo.styled';
 import React, { useState } from 'react';
 import useTargetContact from 'hooks/useTargetContact';
@@ -33,7 +34,7 @@ const ContactInfo = () => {
   });
 
   return (
-    <>
+    <Container>
       <Image source={userAvatar} />
       <ContactTitle>
         <ContactName>{name}</ContactName>
@@ -54,7 +55,7 @@ const ContactInfo = () => {
         </Link>
       </Navigation>
       {isShowContactData ? <ContactData /> : <ContactDescription />}
-    </>
+    </Container>
   );
 };
 

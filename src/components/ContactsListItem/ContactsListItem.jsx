@@ -15,10 +15,7 @@ const ContactsListItem = ({ contact }) => {
   const { userAvatar, name, id, role, number } = getContactInfo(contact);
 
   const handleItemPress = () => {
-    navigation.navigate('Contacts', {
-      screen: 'Contact',
-      params: { id },
-    });
+    navigation.navigate('ContactDetails', { id });
   };
 
   return (

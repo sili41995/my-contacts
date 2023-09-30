@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  gap: ${({ theme }) => theme.primaryGap}px;
+export const Container = styled.ScrollView`
+  padding-left: ${({ theme }) => theme.spacing * 10}px;
+  padding-right: ${({ theme }) => theme.spacing * 10}px;
 `;
 
 export const Title = styled.Text`
@@ -9,6 +10,7 @@ export const Title = styled.Text`
   font-family: Inter-SemiBold;
   font-size: 20px;
   text-align: center;
+  margin-bottom: ${({ theme }) => theme.spacing * 5};
 `;
 
 export const Form = styled.View`
@@ -19,22 +21,6 @@ export const ButtonContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   gap: 20px;
-`;
-
-export const Button = styled.TouchableOpacity`
-  flex-grow: 1;
-  border-radius: 8px;
-  justify-content: center;
-  align-items: center;
-  padding: ${({ theme }) => theme.spacing}px;
-  width: auto;
-`;
-
-export const IconWrap = styled.Text``;
-
-export const ButtonText = styled.Text`
-  font-family: Inter-Medium;
-  font-size: ${({ theme }) => theme.primaryFontSize}px;
 `;
 
 export const Input = styled.TextInput`

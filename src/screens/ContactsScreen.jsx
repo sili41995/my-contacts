@@ -1,8 +1,8 @@
 import React from 'react';
-import ContactsList from 'components/ContactsList/ContactsList';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
 import { useDispatch } from 'react-redux';
+import ContactsNavigation from '../navigation/ContactsNavigation';
 
 const ContactsScreen = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const ContactsScreen = () => {
     };
   }, [dispatch]);
 
-  return <ContactsList />;
+  return <ContactsNavigation />;
 };
 
 export default ContactsScreen;

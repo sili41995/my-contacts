@@ -1,5 +1,11 @@
 import styled from 'styled-components/native';
 
+export const Container = styled.View`
+  gap: ${({ theme }) => theme.spacing * 2}px;
+  padding-left: ${({ theme }) => theme.spacing * 10}px;
+  padding-right: ${({ theme }) => theme.spacing * 10}px;
+`;
+
 export const Image = styled.Image`
   height: 100px;
   object-fit: contain;
@@ -35,7 +41,6 @@ export const Navigation = styled.View`
 export const List = styled.View``;
 
 export const Link = styled.TouchableOpacity`
-  /* background-color: #44de6f; */
   padding: ${({ theme }) => theme.spacing}px
     ${({ theme }) => theme.spacing * 5}px;
   border-radius: 10px;
