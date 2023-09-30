@@ -51,6 +51,7 @@ const RegisterForm = ({ handleFormPress, isShowKeyboard }) => {
               onChangeText={onChange}
               value={value}
               onFocus={handleFormPress}
+              autoFocus={true}
             />
           )}
           name='name'

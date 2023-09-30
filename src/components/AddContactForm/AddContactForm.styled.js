@@ -1,10 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  flex: ${(props) => {
-    console.log(props);
-    return 1;
-  }};
+  flex: 1;
   justify-content: ${({ isShowKeyboard }) =>
     isShowKeyboard ? 'flex-end' : 'center'};
   gap: ${({ theme }) => theme.primaryGap}px;

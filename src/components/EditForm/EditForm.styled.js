@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+export const Container = styled.View`
+  gap: ${({ theme }) => theme.primaryGap}px;
+`;
+
 export const Title = styled.Text`
   color: ${({ theme }) => theme.primaryFontColor};
   font-family: Inter-SemiBold;

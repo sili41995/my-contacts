@@ -5,50 +5,48 @@ import AboutAppScreen from 'screens/AboutAppScreen';
 import AddContactScreen from 'screens/AddContactScreen';
 import { AntDesign } from '@expo/vector-icons';
 
-const mainScreenOptions = {
+const MainTab = createBottomTabNavigator();
+const TabNavigatorScreenOptions = {
   headerShown: false,
+  unmountOnBlur: true,
+  tabBarShowLabel: false,
 };
-const mainTabsOptions = { tabBarShowLabel: false };
-const MainTabs = createBottomTabNavigator();
 
-const PrivateLinks = () => {
+const MainNavigation = () => {
   return (
-    <MainTabs.Navigator
-      screenOptions={mainTabsOptions}
+    <MainTab.Navigator
       initialRouteName='Contacts'
+      screenOptions={TabNavigatorScreenOptions}
     >
-      <MainTabs.Screen
+      <MainTab.Screen
         name='Contacts'
         component={ContactsScreen}
         options={{
-          ...mainScreenOptions,
           tabBarIcon: ({ color, size }) => (
             <AntDesign name='contacts' size={size} color={color} />
           ),
         }}
       />
-      <MainTabs.Screen
-        name='Add contact'
+      <MainTab.Screen
+        name='AddContact'
         component={AddContactScreen}
         options={{
-          ...mainScreenOptions,
           tabBarIcon: ({ color, size }) => (
             <AntDesign name='adduser' size={size} color={color} />
           ),
         }}
       />
-      <MainTabs.Screen
-        name='About app'
+      <MainTab.Screen
+        name='AboutApp'
         component={AboutAppScreen}
         options={{
-          ...mainScreenOptions,
           tabBarIcon: ({ color, size }) => (
             <AntDesign name='questioncircleo' size={size} color={color} />
           ),
         }}
       />
-    </MainTabs.Navigator>
+    </MainTab.Navigator>
   );
 };
 
-export default PrivateLinks;
+export default MainNavigation;

@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { ButtonContainer, Form, Title, Input } from './EditForm.styled';
+import {
+  Container,
+  ButtonContainer,
+  Form,
+  Title,
+  Input,
+} from './EditForm.styled';
 import { useForm, Controller } from 'react-hook-form';
 import getContactInfo from 'utils/getContactInfo';
 import { Ionicons } from '@expo/vector-icons';
@@ -43,7 +49,7 @@ const EditForm = ({ setEditContact }) => {
   }, [contact, dispatch, id]);
 
   return (
-    <>
+    <Container>
       <Title>Contact editing</Title>
       <Form>
         <Controller
@@ -57,6 +63,7 @@ const EditForm = ({ setEditContact }) => {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
+              autoFocus={true}
             />
           )}
           name='name'
@@ -94,7 +101,7 @@ const EditForm = ({ setEditContact }) => {
           />
         </ButtonContainer>
       </Form>
-    </>
+    </Container>
   );
 };
 

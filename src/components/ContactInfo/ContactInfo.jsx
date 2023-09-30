@@ -11,7 +11,8 @@ import {
 } from './ContactInfo.styled';
 import React, { useState } from 'react';
 import useTargetContact from 'hooks/useTargetContact';
-import ContactRouter from 'components/ContactRouter/ContactRouter';
+import ContactData from 'components/ContactData/ContactData';
+import ContactDescription from 'components/ContactDescription/ContactDescription';
 
 const ContactInfo = () => {
   const targetContact = useTargetContact();
@@ -52,7 +53,7 @@ const ContactInfo = () => {
           <LinkText>About</LinkText>
         </Link>
       </Navigation>
-      <ContactRouter isShowContactData={isShowContactData} />
+      {isShowContactData ? <ContactData /> : <ContactDescription />}
     </>
   );
 };

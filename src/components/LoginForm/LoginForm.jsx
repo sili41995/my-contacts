@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Form, Message, Title, Image, Input } from './LoginForm.styled';
 import defaultAvatar from 'images/default-signin-avatar.png';
 import { useForm, Controller } from 'react-hook-form';
@@ -17,8 +17,7 @@ const defaultFormState = {
   },
 };
 
-const LoginForm = ({ handleFormPress, isShowKeyboard }) => {
-  const [credentials, setCredentials] = useState(null);
+const LoginForm = ({ handleFormPress, isShowKeyboard, isFocusScreen }) => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
@@ -28,81 +27,79 @@ const LoginForm = ({ handleFormPress, isShowKeyboard }) => {
     formState: { errors },
   } = useForm(defaultFormState);
 
-  useEffect(() => {
-    if (credentials) {
-      const promise = dispatch(loginUser(credentials));
-      promise.unwrap().then(() => {
+  const onSubmit = (data) => {
+    dispatch(loginUser(data))
+      .unwrap()
+      .then(() => {
         successToast('Hello, my friend!');
       });
-
-      return () => {
-        promise.abort();
-      };
-    }
-  }, [credentials, dispatch]);
+  };
 
   return (
-    <>
-      <Title>log in</Title>
-      <Message>Welcome to Phonebook!</Message>
-      <Image source={defaultAvatar} />
-      <Form>
-        <Controller
-          control={control}
-          rules={{
-            required: true,
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              placeholder='Email'
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              onFocus={handleFormPress}
+    isFocusScreen && (
+      <>
+        <Title>log in</Title>
+        <Message>Welcome to Phonebook!</Message>
+        <Image source={defaultAvatar} />
+        <Form>
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                placeholder='Email'
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+                onFocus={handleFormPress}
+                autoFocus={true}
+              />
+            )}
+            name='email'
+          />
+          {errors.email && errorToast('Email is required')}
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                placeholder='Password'
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+                onFocus={handleFormPress}
+              />
+            )}
+            name='password'
+          />
+          {errors.password &&
+            errorToast(
+              errors.password.type === 'required'
+                ? 'Password is required'
+                : 'Password minimum length is 7 characters'
+            )}
+          {!isShowKeyboard && (
+            <Button
+              action={handleSubmit(onSubmit)}
+              btnType={iconBtnType.auth}
+              disabled={isLoading}
+              title='Log in'
             />
           )}
-          name='email'
-        />
-        {errors.email && errorToast('Email is required')}
-        <Controller
-          control={control}
-          rules={{
-            required: true,
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              placeholder='Password'
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              onFocus={handleFormPress}
-            />
-          )}
-          name='password'
-        />
-        {errors.password &&
-          errorToast(
-            errors.password.type === 'required'
-              ? 'Password is required'
-              : 'Password minimum length is 7 characters'
-          )}
+        </Form>
         {!isShowKeyboard && (
-          <Button
-            action={handleSubmit(setCredentials)}
-            btnType={iconBtnType.auth}
-            disabled={isLoading}
-            title='Log in'
+          <AuthFormMessage
+            link='Register'
+            action={'Sign up'}
+            message={"if you don't have an account yet"}
           />
         )}
-      </Form>
-      {!isShowKeyboard && (
-        <AuthFormMessage
-          link='Register'
-          action={'Sign up'}
-          message={"if you don't have an account yet"}
-        />
-      )}
-    </>
+      </>
+    )
   );
 };
 

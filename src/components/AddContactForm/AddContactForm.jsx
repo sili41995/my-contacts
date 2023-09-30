@@ -93,6 +93,7 @@ const AddContactForm = () => {
                   onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
+                  autoFocus={true}
                 />
               )}
               name='name'
