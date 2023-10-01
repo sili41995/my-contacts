@@ -25,6 +25,7 @@ const AddContactForm = () => {
   const [newContact, setNewContact] = useState(null);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
   const {
     control,
     handleSubmit,
@@ -41,8 +42,6 @@ const AddContactForm = () => {
     Keyboard.dismiss();
     reset();
   };
-
-  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     if (newContact) {

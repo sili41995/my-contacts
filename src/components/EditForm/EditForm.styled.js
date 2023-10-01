@@ -1,16 +1,10 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.ScrollView`
-  padding-left: ${({ theme }) => theme.spacing * 10}px;
-  padding-right: ${({ theme }) => theme.spacing * 10}px;
-`;
-
 export const Title = styled.Text`
   color: ${({ theme }) => theme.primaryFontColor};
   font-family: Inter-SemiBold;
   font-size: 20px;
   text-align: center;
-  margin-bottom: ${({ theme }) => theme.spacing * 5};
 `;
 
 export const Form = styled.View`

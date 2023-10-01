@@ -2,8 +2,6 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   gap: ${({ theme }) => theme.spacing * 2}px;
-  padding-left: ${({ theme }) => theme.spacing * 10}px;
-  padding-right: ${({ theme }) => theme.spacing * 10}px;
 `;
 
 export const Image = styled.Image`

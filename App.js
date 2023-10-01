@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import interMedium from 'fonts/Inter/Inter-Medium.ttf';
@@ -8,7 +9,6 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Text, StatusBar } from 'react-native';
 import Toast from 'react-native-toast-message';
-import 'react-native-gesture-handler';
 import React from 'react';
 import store, { persistor } from 'redux/store';
 import theme from 'constants/theme';
