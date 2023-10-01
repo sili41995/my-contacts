@@ -8,6 +8,7 @@ const Button = ({
   btnType,
   children,
   title = '',
+  btnHeight,
 }) => (
   <Container
     btnType={btnType}
@@ -15,9 +16,15 @@ const Button = ({
     activeOpacity={0.7}
     onPress={action}
     btnWidth={btnWidth}
+    btnHeight={btnHeight}
   >
     {children ? (
-      <IconWrap btnType={btnType}>{children}</IconWrap>
+      <>
+        <IconWrap title={title} btnType={btnType}>
+          {children}
+        </IconWrap>
+        <ButtonText btnType={btnType}>{title}</ButtonText>
+      </>
     ) : (
       <ButtonText btnType={btnType}>{title}</ButtonText>
     )}

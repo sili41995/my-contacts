@@ -32,6 +32,9 @@ function setIconFill(btnType) {
     case iconBtnType.deleteTransparent:
       return '#d3232f';
 
+    case iconBtnType.auth:
+      return '#fff';
+
     default:
       return 'none';
   }

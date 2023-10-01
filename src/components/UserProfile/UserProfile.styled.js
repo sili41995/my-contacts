@@ -3,7 +3,8 @@ import styled from 'styled-components/native';
 export const UserProfileContainer = styled.View`
   padding: ${({ theme }) => theme.paddingContainer}px;
   flex: 1;
-  justify-content: center;
+  justify-content: flex-start;
+  background-color: #fff;
 `;
 
 export const Image = styled.Image`
@@ -25,6 +26,7 @@ export const UserData = styled.View`
 
 export const UserInfo = styled.View`
   gap: ${({ theme }) => theme.spacing * 6}px;
+  margin-bottom: ${({ theme }) => theme.spacing * 10}px;
 `;
 
 export const FullName = styled.Text`

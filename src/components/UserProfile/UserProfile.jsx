@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import { Feather } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
@@ -16,8 +16,13 @@ import {
   UserProfileContainer,
   ContactInfoDesc,
 } from './UserProfile.styled';
+import Button from '../Button/Button';
+import iconBtnType from '../../constants/iconBtnType';
+import { logoutUser } from '../../redux/auth/operations';
+import { successToast } from '../../utils/toasts';
 
 const UserProfile = () => {
+  const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const {
     name,
@@ -28,6 +33,14 @@ const UserProfile = () => {
     phoneNumber,
     location,
   } = getUserInfo(user);
+
+  const handleLogoutBtnPress = () => {
+    dispatch(logoutUser())
+      .unwrap()
+      .then(() => {
+        successToast('Goodbye!');
+      });
+  };
 
   return (
     <UserProfileContainer>
@@ -57,6 +70,14 @@ const UserProfile = () => {
           <ContactInfoDesc>{location}</ContactInfoDesc>
         </ContactInfo>
       </UserInfo>
+      <Button
+        action={handleLogoutBtnPress}
+        btnType={iconBtnType.logout}
+        title='Logout'
+        btnHeight={50}
+      >
+        <SimpleLineIcons name='logout' size={24} />
+      </Button>
     </UserProfileContainer>
   );
 };

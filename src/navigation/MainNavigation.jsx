@@ -4,6 +4,7 @@ import ContactsScreen from 'screens/ContactsScreen';
 import AboutAppScreen from 'screens/AboutAppScreen';
 import AddContactScreen from 'screens/AddContactScreen';
 import { AntDesign } from '@expo/vector-icons';
+import UserProfileScreen from '../screens/UserProfileScreen';
 
 const MainTab = createBottomTabNavigator();
 const TabNavigatorScreenOptions = {
@@ -18,6 +19,15 @@ const MainNavigation = () => {
       initialRouteName='Contacts'
       screenOptions={TabNavigatorScreenOptions}
     >
+      <MainTab.Screen
+        name='UserProfile'
+        component={UserProfileScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name='user' size={size} color={color} />
+          ),
+        }}
+      />
       <MainTab.Screen
         name='Contacts'
         component={ContactsScreen}
