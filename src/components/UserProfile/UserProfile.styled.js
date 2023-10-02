@@ -5,6 +5,7 @@ export const UserProfileContainer = styled.View`
   flex: 1;
   justify-content: flex-start;
   background-color: #fff;
+  gap: ${({ theme }) => theme.spacing * 5}px;
 `;
 
 export const Image = styled.Image`
@@ -19,19 +20,13 @@ export const Name = styled.Text`
   font-size: 35px;
 `;
 
-export const UserData = styled.View`
-  margin-top: ${({ theme }) => theme.spacing * 7}px;
-  margin-bottom: ${({ theme }) => theme.spacing * 16}px;
-`;
+export const UserData = styled.View``;
 
 export const UserInfo = styled.View`
   gap: ${({ theme }) => theme.spacing * 6}px;
-  margin-bottom: ${({ theme }) => theme.spacing * 10}px;
 `;
 
 export const FullName = styled.Text`
-  margin-top: ${({ theme }) => theme.spacing * 2}px;
-  margin-bottom: ${({ theme }) => theme.spacing}px;
   color: ${({ theme }) => theme.primaryFontColor};
   font-family: Jua;
   font-size: 25px;

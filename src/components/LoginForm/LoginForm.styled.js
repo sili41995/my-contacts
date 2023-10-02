@@ -37,3 +37,12 @@ export const Input = styled.TextInput`
   font-family: Inter-Medium;
   font-size: 20px;
 `;
+
+export const InputWrap = styled.View`
+  justify-content: center;
+`;
+
+export const IconWrap = styled.TouchableOpacity`
+  position: absolute;
+  right: 20px;
+`;

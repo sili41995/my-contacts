@@ -109,6 +109,7 @@ const AddContactForm = () => {
                   onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
+                  keyboardType='phone-pad'
                 />
               )}
               name='number'

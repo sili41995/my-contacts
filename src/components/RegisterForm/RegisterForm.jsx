@@ -69,6 +69,7 @@ const RegisterForm = ({ handleFormPress, isShowKeyboard }) => {
               onChangeText={onChange}
               value={value}
               onFocus={handleFormPress}
+              keyboardType='email-address'
             />
           )}
           name='email'
