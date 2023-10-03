@@ -5,7 +5,6 @@ import {
   Message,
   Title,
   Image,
-  Input,
   InputWrap,
   IconWrap,
 } from './LoginForm.styled';
@@ -20,6 +19,8 @@ import iconBtnType from 'constants/iconBtnType';
 import { Ionicons } from '@expo/vector-icons';
 import theme from '../../constants/theme';
 import { useState } from 'react';
+import Input from 'components/Input/Input';
+import formType from 'constants/formType';
 
 const defaultFormState = {
   defaultValues: {
@@ -28,7 +29,7 @@ const defaultFormState = {
   },
 };
 
-const LoginForm = ({ handleFormPress, isShowKeyboard, isFocusScreen }) => {
+const LoginForm = ({ isShowKeyboard, isFocusScreen }) => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
   const [isHidePassword, setIsHidePassword] = useState(true);
@@ -71,9 +72,9 @@ const LoginForm = ({ handleFormPress, isShowKeyboard, isFocusScreen }) => {
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
-                onFocus={handleFormPress}
                 autoFocus={true}
                 keyboardType='email-address'
+                formType={formType.auth}
               />
             )}
             name='email'
@@ -91,8 +92,8 @@ const LoginForm = ({ handleFormPress, isShowKeyboard, isFocusScreen }) => {
                   onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
-                  onFocus={handleFormPress}
                   secureTextEntry={isHidePassword}
+                  formType={formType.auth}
                 />
               )}
               name='password'

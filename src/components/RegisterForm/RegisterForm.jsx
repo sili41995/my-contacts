@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Message, Title, Input } from './RegisterForm.styled';
+import { Form, Message, Title } from './RegisterForm.styled';
 import { useForm, Controller } from 'react-hook-form';
 import AuthFormMessage from 'components/AuthFormMessage/AuthFormMessage';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +8,8 @@ import { registerUser } from 'redux/auth/operations';
 import { errorToast, successToast } from 'utils/toasts';
 import Button from 'components/Button/Button';
 import iconBtnType from 'constants/iconBtnType';
+import Input from 'components/Input/Input';
+import formType from 'constants/formType';
 
 const defaultFormState = {
   defaultValues: {
@@ -17,7 +19,7 @@ const defaultFormState = {
   },
 };
 
-const RegisterForm = ({ handleFormPress, isShowKeyboard }) => {
+const RegisterForm = ({ isShowKeyboard }) => {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
   const {
@@ -50,8 +52,8 @@ const RegisterForm = ({ handleFormPress, isShowKeyboard }) => {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              onFocus={handleFormPress}
               autoFocus={true}
+              formType={formType.auth}
             />
           )}
           name='name'
@@ -68,8 +70,8 @@ const RegisterForm = ({ handleFormPress, isShowKeyboard }) => {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              onFocus={handleFormPress}
               keyboardType='email-address'
+              formType={formType.auth}
             />
           )}
           name='email'
@@ -86,7 +88,7 @@ const RegisterForm = ({ handleFormPress, isShowKeyboard }) => {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              onFocus={handleFormPress}
+              formType={formType.auth}
             />
           )}
           name='password'

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Input,
   Title,
   Container,
   ButtonContainer,
@@ -20,6 +19,8 @@ import { addContact } from 'redux/contacts/operations';
 import { errorToast, successToast } from 'utils/toasts';
 import Button from 'components/Button/Button';
 import iconBtnType from 'constants/iconBtnType';
+import Input from 'components/Input/Input';
+import formType from 'constants/formType';
 
 const AddContactForm = () => {
   const [newContact, setNewContact] = useState(null);
@@ -93,6 +94,7 @@ const AddContactForm = () => {
                   onChangeText={onChange}
                   value={value}
                   autoFocus={true}
+                  formType={formType.addContact}
                 />
               )}
               name='name'
@@ -110,6 +112,7 @@ const AddContactForm = () => {
                   onChangeText={onChange}
                   value={value}
                   keyboardType='phone-pad'
+                  formType={formType.addContact}
                 />
               )}
               name='number'
