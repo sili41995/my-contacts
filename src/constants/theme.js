@@ -6,6 +6,8 @@ const theme = {
   primaryColor: '#38b6ff',
   authPageBackground: 'rgba(46, 47, 66, 0.2)',
   primaryGap: 20,
+  primaryActiveInputBorderColor: '#4d5ae5',
+  primaryActiveInputBackgroundColor: '#4d5ae5',
   // primaryFontWeight: 500,  'Inter-Medium'
   // secondaryFontWeight: 600,
   // otherFontWeight: 400,

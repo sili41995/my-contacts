@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ButtonContainer, Form, Title, Input } from './EditForm.styled';
+import { ButtonContainer, Form, Title } from './EditForm.styled';
 import { useForm, Controller } from 'react-hook-form';
 import getContactInfo from 'utils/getContactInfo';
 import { Ionicons } from '@expo/vector-icons';
@@ -10,6 +10,8 @@ import { errorToast, successToast } from 'utils/toasts';
 import { selectIsLoading } from 'redux/contacts/selectors';
 import iconBtnType from 'constants/iconBtnType';
 import Button from 'components/Button/Button';
+import Input from '../Input/Input';
+import formType from '../../constants/formType';
 
 const EditForm = ({ setEditContact }) => {
   const [contact, setContact] = useState(null);
@@ -58,7 +60,15 @@ const EditForm = ({ setEditContact }) => {
               onChangeText={onChange}
               value={value}
               autoFocus={true}
+              formType={formType.editContact}
             />
+            // <Input
+            //   placeholder='Name'
+            //   onBlur={onBlur}
+            //   onChangeText={onChange}
+            //   value={value}
+            //   autoFocus={true}
+            // />
           )}
           name='name'
         />
@@ -75,6 +85,7 @@ const EditForm = ({ setEditContact }) => {
               onChangeText={onChange}
               value={value}
               keyboardType='phone-pad'
+              formType={formType.editContact}
             />
           )}
           name='number'
