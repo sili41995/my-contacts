@@ -62,13 +62,6 @@ const EditForm = ({ setEditContact }) => {
               autoFocus={true}
               formType={formType.editContact}
             />
-            // <Input
-            //   placeholder='Name'
-            //   onBlur={onBlur}
-            //   onChangeText={onChange}
-            //   value={value}
-            //   autoFocus={true}
-            // />
           )}
           name='name'
         />
