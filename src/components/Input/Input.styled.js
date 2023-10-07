@@ -1,56 +1,8 @@
 import styled from 'styled-components/native';
-import formType from 'constants/formType';
-import theme from '../../constants/theme';
-
-const setInputHeight = (type) => {
-  switch (type) {
-    case formType.auth:
-      return 60;
-
-    case formType.addContact:
-      return 50;
-
-    case formType.editContact:
-      return 50;
-
-    default:
-      break;
-  }
-};
-
-const setInputBorderColor = (type, isFocused) => {
-  switch (type) {
-    // case formType.auth:
-    //   return;
-
-    // case formType.addContact:
-    //   return;
-
-    // case formType.editContact:
-    //   return;
-
-    default:
-      return isFocused
-        ? theme.primaryActiveInputBorderColor
-        : 'rgba(33, 33, 33, 0.2)';
-  }
-};
-
-const setInputBackgroundColor = (type, isFocused) => {
-  switch (type) {
-    case formType.auth:
-      return isFocused ? '#fff' : '#f6f6f6';
-
-    // case formType.addContact:
-    //   return;
-
-    // case formType.editContact:
-    //   return;
-
-    default:
-      return '#f6f6f6';
-  }
-};
+import setInputFontColor from 'utils/setInputFontColor';
+import setInputBackgroundColor from 'utils/setInputBackgroundColor';
+import setInputBorderColor from 'utils/setInputBorderColor';
+import setInputHeight from 'utils/setInputHeight';
 
 export const TextInput = styled.TextInput`
   background-color: ${({ formType, isFocused }) =>
@@ -63,5 +15,6 @@ export const TextInput = styled.TextInput`
   padding-right: ${({ theme }) => theme.spacing * 4}px;
   font-family: Inter-Medium;
   font-size: 20px;
-  /* font-size: ${({ theme }) => theme.secondaryFontSize}px; */
+  color: ${({ formType }) => setInputFontColor(formType)};
+  font-size: ${({ theme }) => theme.secondaryFontSize}px;
 `;
