@@ -5,7 +5,6 @@ import { useState } from 'react';
 const Input = ({
   placeholder,
   formType,
-  onBlur,
   value,
   onChangeText,
   keyboardType,
@@ -24,7 +23,6 @@ const Input = ({
 
   const handleWithoutInputPress = () => {
     toggleFocused();
-    onBlur();
   };
 
   return (

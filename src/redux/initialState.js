@@ -11,7 +11,7 @@ const initialState = {
     isRefreshing: false,
     isLoading: false,
   },
-  filter: '',
+  filter: 'a',
 };
 
 export default initialState;
