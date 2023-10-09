@@ -5,6 +5,7 @@ import setInputBorderColor from 'utils/setInputBorderColor';
 import setInputHeight from 'utils/setInputHeight';
 import setInputFontSize from '../../utils/setInputFontSize';
 import setInputBorderRadius from '../../utils/setInputBorderRadius';
+import setIconFill from '../../utils/setIconFill';
 
 export const TextInput = styled.TextInput`
   flex-grow: 1;
@@ -19,4 +20,18 @@ export const TextInput = styled.TextInput`
   font-family: Inter-Medium;
   font-size: ${({ formType }) => setInputFontSize(formType)}px;
   color: ${({ formType }) => setInputFontColor(formType)};
+`;
+
+export const InputWrap = styled.View`
+  flex-grow: 1;
+  justify-content: center;
+`;
+
+export const IconWrap = styled.TouchableOpacity`
+  position: absolute;
+  right: 20px;
+`;
+
+export const IconContainer = styled.Text`
+  color: ${({ iconBtnType }) => setIconFill(iconBtnType)};
 `;

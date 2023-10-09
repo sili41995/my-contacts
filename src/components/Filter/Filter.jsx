@@ -14,6 +14,7 @@ import { Container } from './Filter.styled';
 import Button from '../Button/Button';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import iconBtnType from '../../constants/iconBtnType';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const Filter = () => {
   const filter = useSelector(selectFilter);
@@ -24,13 +25,25 @@ const Filter = () => {
     dispatch(changeFilter(e));
   };
 
+  const handleClearFilter = () => {
+    dispatch(changeFilter(''));
+  };
+
   return (
     <Container>
+      {/* <Input
+        
+
+      /> */}
       <Input
         placeholder='Search...'
         onChangeText={handleChangeFilter}
         value={filter}
         formType={formType.filter}
+        inputWrap
+        additionalAction={handleClearFilter}
+        iconBtnType={iconBtnType.clearFilter}
+        additionalIcon={filter && <MaterialIcons name='clear' size={20} />}
       />
       <Button
         action={() => dispatch(changeIsAscSortType())}

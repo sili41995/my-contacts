@@ -1,4 +1,5 @@
 import iconBtnType from 'constants/iconBtnType';
+import theme from '../constants/theme';
 
 function setIconFill(btnType) {
   switch (btnType) {
@@ -33,6 +34,12 @@ function setIconFill(btnType) {
       return '#d3232f';
 
     case iconBtnType.auth:
+      return '#fff';
+
+    case iconBtnType.showPassword:
+      return theme.primaryLinkColor;
+
+    case iconBtnType.clearFilter:
       return '#fff';
 
     default:

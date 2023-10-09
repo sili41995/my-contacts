@@ -1,8 +1,14 @@
 import React from 'react';
-import { TextInput } from './Input.styled';
+import { IconWrap, InputWrap, TextInput, IconContainer } from './Input.styled';
 import { useState } from 'react';
 
-const Input = (props) => {
+const Input = ({
+  iconBtnType,
+  additionalIcon,
+  inputWrap,
+  additionalAction,
+  ...props
+}) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const toggleFocused = () => {
@@ -17,7 +23,21 @@ const Input = (props) => {
     toggleFocused();
   };
 
-  return (
+  return inputWrap ? (
+    <InputWrap>
+      <TextInput
+        onBlur={handleWithoutInputPress}
+        onFocus={handleInputPress}
+        isFocused={isFocused}
+        {...props}
+      />
+      <IconWrap activeOpacity={0.7} onPress={additionalAction}>
+        <IconContainer iconBtnType={iconBtnType}>
+          {additionalIcon}
+        </IconContainer>
+      </IconWrap>
+    </InputWrap>
+  ) : (
     <TextInput
       onBlur={handleWithoutInputPress}
       onFocus={handleInputPress}

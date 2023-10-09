@@ -1,13 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
-import {
-  Form,
-  Message,
-  Title,
-  Image,
-  InputWrap,
-  IconWrap,
-} from './LoginForm.styled';
+import { Form, Message, Title, Image } from './LoginForm.styled';
 import defaultAvatar from 'images/default-signin-avatar.png';
 import { useForm, Controller } from 'react-hook-form';
 import AuthFormMessage from 'components/AuthFormMessage/AuthFormMessage';
@@ -17,7 +10,6 @@ import { selectIsLoading } from 'redux/auth/selectors';
 import Button from 'components/Button/Button';
 import iconBtnType from 'constants/iconBtnType';
 import { Ionicons } from '@expo/vector-icons';
-import theme from '../../constants/theme';
 import { useState } from 'react';
 import Input from 'components/Input/Input';
 import formType from 'constants/formType';
@@ -79,31 +71,27 @@ const LoginForm = ({ isShowKeyboard, isFocusScreen }) => {
             name='email'
           />
           {errors.email && errorToast('Email is required')}
-          <InputWrap>
-            <Controller
-              control={control}
-              rules={{
-                required: true,
-              }}
-              render={({ field: { onChange, value } }) => (
-                <Input
-                  placeholder='Password'
-                  onChangeText={onChange}
-                  value={value}
-                  secureTextEntry={isHidePassword}
-                  formType={formType.auth}
-                />
-              )}
-              name='password'
-            />
-            <IconWrap activeOpacity={0.7} onPress={handleSetSecureStatusPress}>
-              <Ionicons
-                name={iconName}
-                size={24}
-                color={theme.primaryLinkColor}
+          <Controller
+            control={control}
+            rules={{
+              required: true,
+            }}
+            render={({ field: { onChange, value } }) => (
+              <Input
+                placeholder='Password'
+                onChangeText={onChange}
+                value={value}
+                secureTextEntry={isHidePassword}
+                formType={formType.auth}
+                inputWrap
+                iconBtnType={iconBtnType.showPassword}
+                additionalAction={handleSetSecureStatusPress}
+                additionalIcon={value && <Ionicons name={iconName} size={24} />}
               />
-            </IconWrap>
-          </InputWrap>
+            )}
+            name='password'
+          />
+
           {errors.password &&
             errorToast(
               errors.password.type === 'required'
