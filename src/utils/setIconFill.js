@@ -36,7 +36,7 @@ function setIconFill(btnType) {
       return '#fff';
 
     default:
-      return 'none';
+      return 'grey';
   }
 }
 

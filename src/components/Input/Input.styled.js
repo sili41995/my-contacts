@@ -5,6 +5,7 @@ import setInputBorderColor from 'utils/setInputBorderColor';
 import setInputHeight from 'utils/setInputHeight';
 
 export const TextInput = styled.TextInput`
+  flex-grow: 1;
   background-color: ${({ formType, isFocused }) =>
     setInputBackgroundColor(formType, isFocused)};
   height: ${({ formType }) => setInputHeight(formType)}px;

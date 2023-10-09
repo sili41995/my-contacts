@@ -11,7 +11,10 @@ const initialState = {
     isRefreshing: false,
     isLoading: false,
   },
-  filter: 'a',
+  filter: {
+    filter: '',
+    isAscSortType: true,
+  },
 };
 
 export default initialState;

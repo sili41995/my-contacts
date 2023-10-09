@@ -2,13 +2,22 @@ import React from 'react';
 import Input from '../Input/Input';
 import formType from '../../constants/formType';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter } from '../../redux/filter/selectors';
-import { changeFilter } from '../../redux/filter/filterSlice';
+import {
+  selectFilter,
+  selectIsAscSortType,
+} from '../../redux/filter/selectors';
+import {
+  changeFilter,
+  changeIsAscSortType,
+} from '../../redux/filter/filterSlice';
 import { Container } from './Filter.styled';
 import Button from '../Button/Button';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import iconBtnType from '../../constants/iconBtnType';
 
 const Filter = () => {
   const filter = useSelector(selectFilter);
+  const isAscSortType = useSelector(selectIsAscSortType);
   const dispatch = useDispatch();
 
   const handleChangeFilter = (e) => {
@@ -24,11 +33,22 @@ const Filter = () => {
         formType={formType.filter}
       />
       <Button
-      // action={handleSubmit(setNewContact)}
-      // btnType={iconBtnType.accept}
-      // disabled={isLoading}
+        action={() => dispatch(changeIsAscSortType())}
+        btnWidth={60}
+        btnType={iconBtnType.filter}
       >
-        {/* <Ionicons name='checkmark' size={30} /> */}
+        {isAscSortType ? (
+          <MaterialCommunityIcons
+            name='sort-alphabetical-descending'
+            size={24}
+          />
+        ) : (
+          <MaterialCommunityIcons
+            name='sort-alphabetical-ascending'
+            size={24}
+            color='black'
+          />
+        )}
       </Button>
     </Container>
   );
