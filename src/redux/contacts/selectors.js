@@ -21,7 +21,11 @@ const selectSortedContacts = createSelector(sortedSelectors, sortedContacts);
 const filteredSelectors = [selectSortedContacts, selectFilter];
 
 const filteredContacts = (contacts, filter) =>
-  filter ? contacts.filter(({ name }) => name.includes(filter)) : contacts;
+  filter
+    ? contacts.filter(({ name }) =>
+        name.toLowerCase().includes(filter.toLowerCase())
+      )
+    : contacts;
 
 export const selectFilteredContacts = createSelector(
   filteredSelectors,

@@ -66,10 +66,9 @@ const LoginForm = ({ isShowKeyboard, isFocusScreen }) => {
             rules={{
               required: true,
             }}
-            render={({ field: { onChange, onBlur, value } }) => (
+            render={({ field: { onChange, value } }) => (
               <Input
                 placeholder='Email'
-                onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
                 autoFocus={true}
@@ -86,10 +85,9 @@ const LoginForm = ({ isShowKeyboard, isFocusScreen }) => {
               rules={{
                 required: true,
               }}
-              render={({ field: { onChange, onBlur, value } }) => (
+              render={({ field: { onChange, value } }) => (
                 <Input
                   placeholder='Password'
-                  onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
                   secureTextEntry={isHidePassword}

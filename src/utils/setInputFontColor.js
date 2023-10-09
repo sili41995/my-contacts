@@ -6,6 +6,9 @@ const setInputFontColor = (type) => {
     case formType.addContact:
       return '#fff';
 
+    case formType.filter:
+      return '#fff';
+
     default:
       return theme.primaryFontColor;
   }

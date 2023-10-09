@@ -46,10 +46,9 @@ const RegisterForm = ({ isShowKeyboard }) => {
           rules={{
             required: true,
           }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value } }) => (
             <Input
               placeholder='Login'
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
               autoFocus={true}
@@ -64,10 +63,9 @@ const RegisterForm = ({ isShowKeyboard }) => {
           rules={{
             required: true,
           }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value } }) => (
             <Input
               placeholder='Email'
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
               keyboardType='email-address'
@@ -82,10 +80,9 @@ const RegisterForm = ({ isShowKeyboard }) => {
           rules={{
             required: true,
           }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value } }) => (
             <Input
               placeholder='Password'
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
               formType={formType.auth}

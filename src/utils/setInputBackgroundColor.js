@@ -8,6 +8,9 @@ const setInputBackgroundColor = (type, isFocused) => {
     case formType.editContact:
       return isFocused ? '#fff' : '#f6f6f6';
 
+    case formType.filter:
+      return 'transparent';
+
     case formType.addContact:
       return 'transparent';
 

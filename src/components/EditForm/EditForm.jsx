@@ -53,10 +53,9 @@ const EditForm = ({ setEditContact }) => {
           rules={{
             required: true,
           }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value } }) => (
             <Input
               placeholder='Name'
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
               autoFocus={true}
@@ -71,10 +70,9 @@ const EditForm = ({ setEditContact }) => {
           rules={{
             maxLength: 100,
           }}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, value } }) => (
             <Input
               placeholder='Phone'
-              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
               keyboardType='phone-pad'

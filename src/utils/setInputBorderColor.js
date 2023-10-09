@@ -13,6 +13,9 @@ const setInputBorderColor = (type, isFocused) => {
         ? theme.primaryActiveInputBorderColor
         : 'rgba(33, 33, 33, 0.2)';
 
+    case formType.filter:
+      return '#ffffff';
+
     case formType.addContact:
       return isFocused ? '#fff' : 'rgba(33, 33, 33, 0.2)';
 
