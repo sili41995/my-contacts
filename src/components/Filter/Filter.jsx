@@ -31,10 +31,6 @@ const Filter = () => {
 
   return (
     <Container>
-      {/* <Input
-        
-
-      /> */}
       <Input
         placeholder='Search...'
         onChangeText={handleChangeFilter}

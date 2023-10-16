@@ -1,22 +1,12 @@
 import React from 'react';
 import { Container, IconWrap, ButtonText } from './Button.styled';
 
-const Button = ({
-  btnWidth,
-  action,
-  disabled,
-  btnType,
-  children,
-  title = '',
-  btnHeight,
-}) => (
+const Button = ({ action, btnType, children, title = '', ...otherProps }) => (
   <Container
-    btnType={btnType}
-    disabled={disabled}
     activeOpacity={0.7}
+    btnType={btnType}
     onPress={action}
-    btnWidth={btnWidth}
-    btnHeight={btnHeight}
+    {...otherProps}
   >
     {children ? (
       <>
