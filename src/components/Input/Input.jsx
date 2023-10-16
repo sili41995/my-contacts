@@ -23,14 +23,18 @@ const Input = ({
     toggleFocused();
   };
 
+  const input = (
+    <TextInput
+      onBlur={handleWithoutInputPress}
+      onFocus={handleInputPress}
+      isFocused={isFocused}
+      {...props}
+    />
+  );
+
   return inputWrap ? (
     <InputWrap>
-      <TextInput
-        onBlur={handleWithoutInputPress}
-        onFocus={handleInputPress}
-        isFocused={isFocused}
-        {...props}
-      />
+      {input}
       <IconWrap activeOpacity={0.7} onPress={additionalAction}>
         <IconContainer iconBtnType={iconBtnType}>
           {additionalIcon}
@@ -38,12 +42,7 @@ const Input = ({
       </IconWrap>
     </InputWrap>
   ) : (
-    <TextInput
-      onBlur={handleWithoutInputPress}
-      onFocus={handleInputPress}
-      isFocused={isFocused}
-      {...props}
-    />
+    input
   );
 };
 
